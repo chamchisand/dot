@@ -156,7 +156,7 @@ focus_follows_mouse no
 # finds out, if available)
 bar {
     #status_command i3status
-    status_command i3status -c /home/andrew/.i3/i3status.conf
+    status_command i3status -c ~/.i3/i3status.conf
     position top
 	workspace_buttons yes
 	colors {
@@ -183,7 +183,6 @@ client.focused_inactive #2d2d2d #2d2d2d #cccccc #f2777a
 client.unfocused #2d2d2d #2d2d2d #cccccc #f2777a
 client.urgent #f2777a #f2777a #cccccc #f2777a
 
-#exec --no-startup-id feh --bg-fill ~/Desktop/WRcdJTR.jpg
 exec xsetroot -solid "#2d2d2d"
 exec --no-startup-id xautolock -time 60 -locker 'i3lock -d -c 2d2d2d'
 
