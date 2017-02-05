@@ -1,0 +1,33 @@
+#!/bin/bash
+
+lines=$(transmission-remote -l)
+check=$(echo "$lines" | head -n 1 | awk '{ print $1 }')
+
+if [ "$check" != "ID" ]; then
+  exit
+fi
+
+lines=$(echo "$lines" | tail -n +2 | head -n -1)
+count=0
+done=0
+
+IFS='
+'
+for x in $lines; do
+  count=$((count + 1))
+  percent=$(echo $x | awk '{ print $2 }')
+
+  if [ "$percent" == "100%" ]; then
+    done=$((done + 1))
+  fi
+done
+
+if [ $count -eq 0 ]; then
+  exit
+fi
+
+echo "$done/$count"
+#echo "$done/$count"
+#if [ $done -gt 0 ]; then
+#  echo "#FF0000"
+#fi
