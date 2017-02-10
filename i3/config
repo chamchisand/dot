@@ -9,19 +9,18 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $cwd ~/.config/i3
-set $white #c5c8c6
-set $black #222222
-set $red   #a3685a
-set $blue  #01a0e4
-set $green #718c00
-set $grey  #444444
-set $trn   #00000000
+set $white #a7adba
+set $black #2b303b
+set $gray  #525C65
+set $red   #b48ead
+set $blue  #96b5b4
+set $trn   #ffffff00
 
 set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Terminus 10
+font pango:Terminus 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -105,28 +104,39 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+set $ws1 workspace 1:one
+set $ws2 workspace 2:two
+set $ws3 workspace 3:three
+set $ws4 workspace 4:four
+set $ws5 workspace 5:five
+set $ws6 workspace 6:six
+set $ws7 workspace 7:seven
+set $ws8 workspace 8:eight
+set $ws9 workspace 9:nine
+set $ws0 workspace 10:ten
+
+bindsym $mod+1 $ws1
+bindsym $mod+2 $ws2
+bindsym $mod+3 $ws3
+bindsym $mod+4 $ws4
+bindsym $mod+5 $ws5
+bindsym $mod+6 $ws6
+bindsym $mod+7 $ws7
+bindsym $mod+8 $ws8
+bindsym $mod+9 $ws9
+bindsym $mod+0 $ws0
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to $ws1
+bindsym $mod+Shift+2 move container to $ws2
+bindsym $mod+Shift+3 move container to $ws3
+bindsym $mod+Shift+4 move container to $ws4
+bindsym $mod+Shift+5 move container to $ws5
+bindsym $mod+Shift+6 move container to $ws6
+bindsym $mod+Shift+7 move container to $ws7
+bindsym $mod+Shift+8 move container to $ws8
+bindsym $mod+Shift+9 move container to $ws9
+bindsym $mod+Shift+0 move container to $ws0
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -182,14 +192,14 @@ bar {
   #hidden_state hide
 
   colors {
-    statusline $white
-    background $trn
-    separator  $trn
+    statusline $red
+    background $black
+    separator  $black
 
-    focused_workspace  $trn $trn $blue
-    active_workspace   $trn $trn $white
-    inactive_workspace $trn $trn $white
-    urgent_workspace   $trn $trn $white
+    focused_workspace  $black $black $red
+    active_workspace   $black $black $gray
+    inactive_workspace $black $black $gray
+    urgent_workspace   $red   $red   $black
   }
 }
 
@@ -197,20 +207,20 @@ new_window pixel 4
 new_float pixel 4
 
 # class                 border backgr text   indicator child_border
-client.focused          $black $black $white $red      $grey
-client.focused_inactive $black $grey  $white $black    $black
-client.unfocused        $black $grey  $white $black    $black
-client.urgent           $red   $grey  $white $white    $red
+client.focused          $black $gray  $white $red      $gray
+client.focused_inactive $black $black $white $black    $black
+client.unfocused        $black $black $white $black    $black
+client.urgent           $red   $red   $white $red      $red
 
 # i3-gaps
 gaps outer 0
 gaps inner 10
 
-#smart_borders on
+smart_borders on
 #smart_gaps on
 
-#exec --no-startup-id xsetroot -solid '$black'
+exec --no-startup-id xsetroot -solid '$black'
 exec --no-startup-id ibus-daemon -dr
-exec --no-startup-id compton --config $cwd/compton.conf
-exec --no-startup-id ~/wallpaper/bg.sh
+#exec --no-startup-id compton --config $cwd/compton.conf
+#exec --no-startup-id ~/wallpaper/bg.sh
 #exec --no-startup-id redshift
