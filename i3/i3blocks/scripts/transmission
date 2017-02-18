@@ -8,7 +8,6 @@ if [ "$check" != "ID" ]; then
 fi
 
 lines=$(echo "$lines" | tail -n +2 | head -n -1)
-warnColor="#b48ead"
 count=0
 done=0
 out=""
@@ -39,7 +38,7 @@ for x in $lines; do
   fi
 
   if [ $warn == 1 ]; then
-    out="$out <span color='$warnColor'>$percent$status</span>"
+    out="$out <span background='#b48ead' color='#2b303b'> $percent$status </span>"
   else
     out="$out $percent$status"
   fi
