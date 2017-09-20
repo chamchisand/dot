@@ -5,15 +5,31 @@
 # TR_TORRENT_ID
 # TR_TORRENT_NAME
 
-if [ -z "$TR_TORRENT_ID" ]; then
-  exit
+if [ -n "$TR_TORRENT_ID" ]; then
+  transmission-remote -t $TR_TORRENT_ID --stop
+else
+  lines=$(transmission-remote -l 2>/dev/null)
+  check=$(echo "$lines" | head -n 1 | awk '{ print $1 }')
+
+  if [ "$check" != "ID" ]; then
+    exit
+  fi
+
+  lines=$(echo "$lines" | sed '1d;$d')
+
+  while read -r line; do
+    IFS=' ' read -a tokens <<< "$line"
+    id=${tokens[0]}
+    status=${tokens[4]}
+
+    if [[ "$status" == "Done" ]]; then
+      transmission-remote -t $id --stop
+    fi
+  done <<< "$lines"
 fi
 
-transmission-remote -t $TR_TORRENT_ID --stop
-
-if [ -n "$TR_TORRENT_NAME" ]; then
-  dir=~/Downloads
-  name=$(echo "$TR_TORRENT_NAME" | sed 's/ //g')
-  mv $dir/"$TR_TORRENT_NAME" $dir/"$name"
-fi
-
+#if [ -n "$TR_TORRENT_NAME" ]; then
+#  dir=~/Downloads
+#  name=$(echo "$TR_TORRENT_NAME" | sed 's/ //g')
+#  mv $dir/"$TR_TORRENT_NAME" $dir/"$name"
+#fi
