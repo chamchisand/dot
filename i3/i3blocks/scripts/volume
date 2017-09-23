@@ -53,8 +53,9 @@ volume() {
 }
 
 format() {
+  # #96b5b4
   volume=$(grep -Po '(\d+%)' | head -1)
-  echo "$volume"
+  echo volume:$volume
 
   #if [ "$volume" == "0%" ]; then
   #  echo "mute"

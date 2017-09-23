@@ -1,0 +1,17 @@
+#!/bin/sh
+
+. $(dirname "$0")/colors
+
+load="$(cut -d ' ' -f1 /proc/loadavg)"
+cpus="$(nproc)"
+warn=1
+
+# full text
+if [[ "$load" > "$warn" ]]; then
+  echo $(warnColor "cpu:$load")
+else
+  echo "cpu:$load"
+fi
+
+# short text
+echo "$load"

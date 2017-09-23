@@ -1,0 +1,23 @@
+#!/bin/bash
+
+black=#2b303b
+white=#dddddd
+red=#bf616a
+green=#a3be8c
+blue=#8fa1b3
+yellow=#ebcb8b
+
+criticalColor()
+{
+  echo "<span background='$red' color='$black'> $1 </span>"
+}
+
+warnColor()
+{
+  echo "<span background='$yellow' color='$black'> $1 </span>"
+}
+
+okColor()
+{
+  echo "<span background='$green' color='$black'> $1 </span>"
+}
