@@ -2,8 +2,7 @@ execute pathogen#infect()
 
 filetype plugin on
 syntax on
-
-colorscheme dracula
+"colorscheme dracula
 
 let mapleader=','
 set background=dark
@@ -17,27 +16,48 @@ set autoindent
 set number
 set foldmethod=indent
 set nofoldenable
-set foldlevelstart=1
-set foldnestmax=5
+"set foldlevelstart=1
+"set foldnestmax=5
 set conceallevel=0
+set showmatch
 
-vnoremap p "_dP
+hi Search ctermbg=magenta ctermfg=white
+hi Visual ctermbg=magenta ctermfg=white
+hi Folded ctermfg=magenta
+"hi MatchParen ctermfg=red ctermbg=none
+"hi SpecialKey ctermfg=240
+hi ExtraWhitespace ctermbg=red
 
+autocmd BufWritePre * StripWhitespace
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd Filetype json setlocal ts=2 sw=2 expandtab
 
+vnoremap p "_dP
+vnoremap P "_dP
+
 let NERDTreeShowLineNumbers=0
 let NERDTreeShowHidden=0
 "let NERDTreeWinSize=1
-
 let g:NERDCompactSexyComs = 1
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
+let g:NERDTreeIndicatorMapCustom = {
+  \ "Modified"  : "+",
+  \ "Staged"    : "+",
+  \ "Untracked" : "-",
+  \ "Renamed"   : "+",
+  \ "Unmerged"  : "═",
+  \ "Deleted"   : "x",
+  \ "Dirty"     : "+",
+  \ "Clean"     : "!",
+  \ 'Ignored'   : '-',
+  \ "Unknown"   : "-"
+	\ }
 
 map <C-n> :NERDTreeToggle<CR>
-"map <Leader>n :NERDTreeToggle<CR>
+map <Leader>n :NERDTreeToggle<CR>
 nmap <Leader>w <C-w>w
 
 "hi Directory guifg=none ctermfg=red
@@ -45,17 +65,6 @@ nmap <Leader>w <C-w>w
 "let &colorcolumn=join(range(81,999),",")
 "highlight ColorColumn ctermbg=darkgray
 "set colorcolumn=80
-
-hi ExtraWhitespace ctermbg=red
-autocmd BufWritePre * StripWhitespace
-
-set hlsearch
-"hi Search ctermbg=cyan ctermfg=white
-hi Visual ctermbg=magenta ctermfg=white
-
-set showmatch
-"hi MatchParen ctermfg=red ctermbg=none
-"hi SpecialKey ctermfg=240
 
 let g:airline_theme='bubblegum'
 let g:airline#extensions#tabline#enabled = 1
@@ -81,8 +90,8 @@ endif
 " indentation
 "set list
 "let &lcs = 'tab:¦ '
-let g:indentLine_color_term = 240
-let g:indentLine_enabled = 1
+"let g:indentLine_color_term = 240
+"let g:indentLine_enabled = 1
 
 " vim-json
 let g:vim_json_syntax_conceal = 0
@@ -102,14 +111,14 @@ let g:neocomplete#sources#syntax#min_keyword_length = 3
 
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-    \ }
+	\ 'default' : '',
+	\ 'vimshell' : $HOME.'/.vimshell_hist',
+	\ 'scheme' : $HOME.'/.gosh_completions'
+	\ }
 
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
+	let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
