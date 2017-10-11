@@ -2,7 +2,12 @@ execute pathogen#infect()
 
 filetype plugin on
 syntax on
+
 "colorscheme dracula
+"if filereadable(expand("~/.vimrc_background"))
+"	let base16colorspace=256
+"	source ~/.vimrc_background
+"endif
 
 let mapleader=','
 set background=dark
