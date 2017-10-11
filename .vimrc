@@ -29,8 +29,8 @@ set showmatch
 hi Search ctermbg=magenta ctermfg=white
 hi Visual ctermbg=magenta ctermfg=white
 hi Folded ctermfg=magenta
-"hi MatchParen ctermfg=red ctermbg=none
-"hi SpecialKey ctermfg=240
+hi MatchParen ctermfg=red ctermbg=none
+hi SpecialKey ctermfg=238
 hi ExtraWhitespace ctermbg=red
 
 autocmd BufWritePre * StripWhitespace
@@ -93,8 +93,8 @@ if exists(":Tabularize")
 endif
 
 " indentation
-"set list
-"let &lcs = 'tab:¦ '
+set list
+let &lcs = 'tab:¦ '
 "let g:indentLine_color_term = 240
 "let g:indentLine_enabled = 1
 
