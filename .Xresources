@@ -1,0 +1,55 @@
+Xft.antialias: 1
+Xft.autohint: 0
+Xft.dpi: 96
+Xft.hinting: 1
+Xft.hintstyle: hintfull
+Xft.lcdfilter: lcddefault
+Xft.rgba: rgb
+
+! c o l o r -  s e t t i n g s
+
+#include "~/github/base16-xresources/xresources/base16-ocean-256.Xresources"
+
+! u r x v t
+
+URxvt*scrollBar: false
+!URxvt*font: xft:xos4 Terminus:size=8:antialias=false
+!URxvt*boldFont: xft:xos4 Terminus:size=8:antialias=false
+!URxvt*italicFont: xft:xos4 Terminus:size=8:antialias=false
+!URxvt*boldItalicFont: xft:xos4 Terminus:size=8:antialias=false
+
+URxvt*font: xft:xos4 Terminus:size=8:antialias=false,xft:Noto Sans CJK KR:antialias=false
+URxvt*boldFont: xft:xos4 Terminus:size=8:antialias=false,xft:Noto Sans Mono CJK KR:antialias=false
+URxvt*italicFont: xft:xos4 Terminus:size=8:antialias=false,xft:Noto Sans Mono CJK KR:antialias=false
+URxvt*boldItalicFont: xft:xos4 Terminus:size=8:antialias=false,xft:Noto Sans Mono CJK KR:antialias=false
+
+!URxvt*underlineColor: yellow
+
+!URxvt.transparent:   true
+!URxvt.tintColor:     white
+!URxvt.shading:       20
+
+!URxvt*depth: 32
+!URxvt*background: rgba:0000/0000/0200/c800
+
+!URxvt*scrollBar_right: true
+!URxvt*scrollColor:     #000000
+!URxvt*geometry:        112x22
+
+!URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+!URxvt.url-select.launcher:  chromium
+!URxvt.url-select.underline: true
+
+!URxvt.keysym.M-u:           perl:url-select:select_next
+!URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+!URxvt.keysym.M-s:           perl:keyboard-select:search
+
+rofi.font: xos4 Terminus 8
+rofi.color-enabled: true
+rofi.color-window: base00, base00, base04
+rofi.color-normal: base00, base04, base00, base04, base00
+!rofi.color-window: base00, base00, base0E
+!rofi.color-normal: base00, base0E, base00, base0E, base00
+!rofi.color-active: base00, #268bd2, base00, #268bd2, #205171
+!rofi.color-urgent: base00, #f3843d, base00, #268bd2, #ffc39c
+rofi.separator-style: solid
