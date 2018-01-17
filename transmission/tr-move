@@ -1,0 +1,14 @@
+#/bin/bash
+
+if [ -z "$1" ]; then
+  exit
+fi
+
+list=()
+
+for i in "${list[@]}"
+do
+  if [[ "${1^^}" = *"${i^^}"* ]]; then
+    mv "$1" /mnt/seagate/plex
+  fi
+done
