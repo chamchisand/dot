@@ -335,7 +335,7 @@ ramp-coreload-7 = █
 [module/memory]
 type = internal/memory
 interval = 10
-format-prefix = "mem"
+format-prefix = "mem:"
 ;format-prefix-foreground = ${colors.gray}
 label = %percentage_used%%
 
