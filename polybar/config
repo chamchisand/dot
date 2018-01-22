@@ -41,7 +41,7 @@ format-overline = ${colors.green}
 [bar/mybar]
 monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 20
+height = 24
 ;offset-x = 0
 ;offset-y = 0
 radius = 0
@@ -65,9 +65,9 @@ padding-right = 0
 module-margin-left = 1
 module-margin-right = 0
 
-font-0 = xos4 Terminus:size=12;2
-font-1 = NanumSquare:antialias=false:size=8;2
-font-2 = Unifont:size=12;2
+font-0 = xos4 Terminus:pixelsize=12;2
+font-1 = NanumSquare:antialias=false:pixelsize=8;2
+font-2 = Font Awesome 5 Free:style=Solid:pixelsize=8:antialias=true;2
 
 modules-left = transmission
 modules-center = i3
@@ -111,14 +111,15 @@ type = custom/script
 exec = ~/bin/tr-bar
 
 format = <label>
-format-prefix = "[transmission] "
+format-prefix = " "
 label = %output%
 interval = 60
 
 [module/volume]
 type = custom/ipc
 
-format = [vol] <output>
+format = <output>
+format-prefix = "vol:"
 output = %output%
 
 hook-0 = echo $(~/bin/volume)
@@ -199,7 +200,7 @@ spacing = 1
 mount-0 = /
 mount-1 = /home
 
-label-mounted = [%mountpoint%] %percentage_used%%
+label-mounted = %mountpoint%:%percentage_used%%
 label-unmounted = %mountpoint% not mounted
 
 ;[module/bspwm]
@@ -269,15 +270,16 @@ label-urgent-background = ${colors.background}
 type = internal/mpd
 
 ;format-online = <toggle> <bar-progress>
+format-offline = <label-offline>
 format-playing = <label-song> <icon-prev> <icon-stop> <icon-pause> <icon-next> <bar-progress>
-format-stopped = [mpd] <icon-play>
+format-stopped = <icon-play> mpd offline
 format-paused = <label-song> <icon-play> <icon-stop> <bar-progress>
 
-icon-prev = ⏪
-icon-stop = ⏹
-icon-play = ▶
-icon-pause = ▮▮
-icon-next = ⏩
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
 
 bar-progress-width = 5
 bar-progress-indicator = |
@@ -288,9 +290,7 @@ bar-progress-empty = -
 label-song = %artist% - %title%
 label-song-maxlen = 20
 label-song-ellipsis = true
-label-offline = "offline"
-
-;label-song-foreground = ${colors.gray}
+label-offline = "mpd offline"
 
 ;[module/xbacklight]
 ;type = internal/xbacklight
@@ -319,7 +319,7 @@ type = internal/cpu
 interval = 10
 
 format = <label> <ramp-coreload>
-format-prefix = "[cpu] "
+format-prefix = "cpu:"
 ;format-prefix-foreground = ${colors.gray}
 label = %percentage%%
 
@@ -335,7 +335,7 @@ ramp-coreload-7 = █
 [module/memory]
 type = internal/memory
 interval = 10
-format-prefix = "[mem] "
+format-prefix = "mem"
 ;format-prefix-foreground = ${colors.gray}
 label = %percentage_used%%
 

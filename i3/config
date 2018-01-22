@@ -9,19 +9,15 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $cwd ~/.config/i3
-set $white  #eff1f5
-set $black  #2b303b
-set $gray   #65737e
-set $red    #bf616a
-set $green  #a3be8c
-set $yellow #ebcb8b
-set $blue   #8fa1b3
-set $purple #b48ead
-set $teal   #96b5b4
 
-set $bg     #2b303b
-set $txt    #8fa1b3
-set $trn    #2b303bFF
+set_from_resource $bg background #ff0000
+set_from_resource $fg foreground #eff1f5
+set_from_resource $border color19 #65737e
+set_from_resource $gray color18 #65737e
+set_from_resource $red color1 #bf616a
+set_from_resource $green color2 #a3be8c
+set_from_resource $blue color4 #8fa1b3
+set_from_resource $yellow color3 #ebcb8b
 
 set $mod Mod1
 
@@ -45,8 +41,8 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec termite
-#bindsym $mod+Return exec urxvt
+#bindsym $mod+Return exec termite
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -160,16 +156,16 @@ mode "resize" {
   # Pressing right will grow the window’s width.
   # Pressing up will shrink the window’s height.
   # Pressing down will grow the window’s height.
-  bindsym j resize shrink width 10 px or 10 ppt
-  bindsym k resize grow height 10 px or 10 ppt
-  bindsym l resize shrink height 10 px or 10 ppt
-  bindsym semicolon resize grow width 10 px or 10 ppt
+  bindsym j resize shrink width 1 px or 1 ppt
+  bindsym k resize grow height 1 px or 1 ppt
+  bindsym l resize shrink height 1 px or 1 ppt
+  bindsym semicolon resize grow width 1 px or 1 ppt
 
   # same bindings, but for the arrow keys
-  bindsym Left resize shrink width 10 px or 10 ppt
-  bindsym Down resize grow height 10 px or 10 ppt
-  bindsym Up resize shrink height 10 px or 10 ppt
-  bindsym Right resize grow width 10 px or 10 ppt
+  bindsym Left resize shrink width 1 px or 1 ppt
+  bindsym Down resize grow height 1 px or 1 ppt
+  bindsym Up resize shrink height 1 px or 1 ppt
+  bindsym Right resize grow width 1 px or 1 ppt
 
   # back to normal: Enter or Escape
   bindsym Return mode "default"
@@ -179,56 +175,55 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 focus_follows_mouse no
 
-bar {
-  #status_command i3status -c $cwd/status.conf
-  font pango:xos4 Terminus 8
-  status_command $cwd/i3blocks/i3blocks -c $cwd/i3blocks/i3blocks.conf
-  i3bar_command i3bar -t
-  tray_padding 0
-  position bottom
-  height 20
-
-  workspace_buttons yes
-  bindsym button1 nop
-  bindsym button4 nop
-  bindsym button5 nop
-
-  strip_workspace_numbers yes
-  #binding_mode_indicator yes
-  #mode invisible
-  #hidden_state hide
-
-  colors {
-    statusline $txt
-    background $trn
-    separator  $bg
-
-    focused_workspace  $yellow $yellow $black
-    active_workspace   $green $green $black
-    inactive_workspace $green $green $black
-    urgent_workspace   $red $red $black
-  }
-}
+#bar {
+#  #status_command i3status -c $cwd/status.conf
+#  font pango:xos4 Terminus 8
+#  status_command $cwd/i3blocks/i3blocks -c $cwd/i3blocks/i3blocks.conf
+#  i3bar_command i3bar -t
+#  tray_padding 0
+#  position bottom
+#  height 30
+#
+#  workspace_buttons yes
+#  bindsym button1 nop
+#  bindsym button4 nop
+#  bindsym button5 nop
+#
+#  strip_workspace_numbers yes
+#  #binding_mode_indicator yes
+#  #mode invisible
+#  #hidden_state hide
+#
+#  colors {
+#    statusline $fg
+#    background $bg
+#    separator  $bg
+#
+#    focused_workspace  $yellow $yellow $bg
+#    active_workspace   $blue $blue $bg
+#    inactive_workspace $blue $blue $bg
+#    urgent_workspace   $red $red $bg
+#  }
+#}
 
 new_window pixel 4
 new_float pixel 4
 
-# class                 border backgr text   indi   child_border
-client.focused          $bg    $blue  $txt   $green $blue
-client.focused_inactive $bg    $bg    $txt   $bg    $bg
-client.unfocused        $bg    $bg    $txt   $bg    $bg
-client.urgent           $red   $red   $txt   $red   $red
+# class                 border backgr text  indi   child_border
+client.focused          $gray  $gray  $fg   $red   $gray
+client.focused_inactive $bg    $bg    $fg   $bg    $bg
+client.unfocused        $bg    $bg    $fg   $bg    $bg
+client.urgent           $red   $red   $fg   $bg    $red
 
 # i3-gaps
 gaps outer 0
 gaps inner 10
-
 #smart_borders on
 #smart_gaps on
 
 exec --no-startup-id xsetroot -solid '$bg'
 exec --no-startup-id ibus-daemon -dr
-exec --no-startup-id compton --config $cwd/compton.conf
-#exec_always --no-startup-id ~/bin/bg
-#exec_always --no-startup-id $HOME/bin/polybar-launch
+#exec --no-startup-id compton --config $cwd/compton.conf
+exec_always --no-startup-id ~/bin/bg.sh ~/Pictures/NuOnZQX.png
+exec_always --no-startup-id $HOME/bin/polybar-launch
 #exec --no-startup-id redshift
