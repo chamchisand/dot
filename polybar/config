@@ -8,14 +8,14 @@
 ;=====================================================
 
 [colors]
-background = ${xrdb:color0:#000000}
-foreground = ${xrdb:color8:#ffffff}
+background = ${xrdb:background:#000000}
+foreground = ${xrdb:color1:#ffffff}
 
-;transparent = #00000FF
+transparent = #00000FF
 black = ${xrdb:color0:#000000}
 gray = ${xrdb:color8:#cccccc}
 white = ${xrdb:color7:#ffffff}
-red = ${xrdb:color5:#ff0000}
+red = ${xrdb:color1:#ff0000}
 green = ${xrdb:color2:#00ff00}
 blue = ${xrdb:color4:#0000ff}
 yellow = ${xrdb:color3:#ffff00}
@@ -33,7 +33,7 @@ format-background = ${colors.background}
 format-underline = ${colors.background}
 format-padding = 1
 format-prefix-foreground = ${colors.gray}
-;format-overline = ${colors.green}
+format-overline = ${colors.green}
 ;format-spacing = 0
 ;format-margin =
 ;format-offset =
@@ -50,14 +50,14 @@ fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 2
-line-color = ${colors.red}
+;line-size = 0
+;line-color = ${colors.red}
 
 border-top-size = 0
 border-bottom-size = 0
 border-left-size = 0
 border-right-size = 0
-border-color = ${colors.black}
+border-color = ${colors.background}
 
 padding-left = 0
 padding-right = 0
@@ -65,11 +65,13 @@ padding-right = 0
 module-margin-left = 1
 module-margin-right = 0
 
-font-0 = xos4 Terminus:style=Regular:pixelsize=12
+font-0 = xos4 Terminus:size=12;2
+font-1 = NanumSquare:antialias=false:size=8;2
+font-2 = Unifont:size=12;2
 
 modules-left = transmission
 modules-center = i3
-modules-right = mpd volume fs-root fs-home cpu memory date xkeyboard
+modules-right = mpd volume filesystem cpu memory date xkeyboard
 ;modules-right = filesystem xbacklight xkeyboard memory cpu battery temperature date powermenu
 
 tray-position = right
@@ -77,7 +79,7 @@ tray-padding = 0
 ;tray-transparent = true
 ;tray-background = ${colors.background}
 
-bottom = true
+top = true
 
 ;wm-restack = bspwm
 ;wm-restack = i3
@@ -86,7 +88,6 @@ bottom = true
 
 ;scroll-up = bspwm-desknext
 ;scroll-down = bspwm-deskprev
-
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
 
@@ -95,30 +96,30 @@ enable-ipc = true
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-[module/demo]
-type = custom/ipc
-hook-0 = echo foobar
-hook-1 = date +%s
-hook-2 = whoami
-initial = 3
-click-left = polybar-msg -p %pid% hook demo 1
-click-right = polybar-msg -p %pid% hook demo 2
-double-click-left = polybar-msg -p %pid% hook demo 3
+;[module/demo]
+;type = custom/ipc
+;hook-0 = echo foobar
+;hook-1 = date +%s
+;hook-2 = whoami
+;initial = 3
+;click-left = polybar-msg -p %pid% hook demo 1
+;click-right = polybar-msg -p %pid% hook demo 2
+;double-click-left = polybar-msg -p %pid% hook demo 3
 
 [module/transmission]
 type = custom/script
 exec = ~/bin/tr-bar
 
 format = <label>
+format-prefix = "[transmission] "
 label = %output%
 interval = 60
 
 [module/volume]
 type = custom/ipc
 
-format-prefix = "vol "
-;format-prefix-foreground = ${colors.gray}
-label = %output%
+format = [vol] <output>
+output = %output%
 
 hook-0 = echo $(~/bin/volume)
 initial = 1
@@ -143,6 +144,37 @@ scroll-down = ~/bin/volume 5 && polybar-msg -p %pid% hook volume 1
 ;scroll-up = ~/bin/volume 4
 ;scroll-down = ~/bin/volume 5
 
+;[module/volume]
+;type = internal/volume
+;
+;master-mixer = PCM
+;speaker-mixer = PCM
+;
+;format-volume = <label-volume> <bar-volume>
+;;label-volume = VOL
+;;label-volume-foreground = ${root.foreground}
+;
+;;format-muted-prefix = ""
+;;format-muted-foreground = ${colors.foreground}
+;label-muted = muted
+;
+;bar-volume-width = 10
+;bar-volume-foreground-0 = #55aa55
+;bar-volume-foreground-1 = #55aa55
+;bar-volume-foreground-2 = #55aa55
+;bar-volume-foreground-3 = #55aa55
+;bar-volume-foreground-4 = #55aa55
+;bar-volume-foreground-5 = #f5a70a
+;bar-volume-foreground-6 = #ff5555
+;bar-volume-gradient = false
+;bar-volume-indicator = |
+;bar-volume-indicator-font = 2
+;bar-volume-fill = ─
+;bar-volume-fill-font = 2
+;bar-volume-empty = ─
+;bar-volume-empty-font = 2
+;bar-volume-empty-foreground = ${colors.foreground}
+
 ;[module/xwindow]
 ;type = internal/xwindow
 ;label = %title:0:30:...%
@@ -159,27 +191,16 @@ label-indicator-margin-left = 1
 ;label-indicator-background = ${colors.blue}
 ;label-indicator-underline = ${colors.red}
 
-[module/fs-root]
+[module/filesystem]
 type = internal/fs
 interval = 60
+spacing = 1
+
 mount-0 = /
+mount-1 = /home
 
-format-mounted-prefix = "/ "
-;format-mounted-prefix-foreground = ${colors.gray}
-
-label-mounted = %percentage_used%%
-;label-unmounted = %mountpoint% not mounted
-;label-unmounted-foreground = ${colors.foreground}
-
-[module/fs-home]
-type = internal/fs
-interval = 60
-mount-0 = /home
-
-format-mounted-prefix = "/home "
-;format-mounted-prefix-foreground = ${colors.gray}
-
-label-mounted = %percentage_used%%
+label-mounted = [%mountpoint%] %percentage_used%%
+label-unmounted = %mountpoint% not mounted
 
 ;[module/bspwm]
 ;type = internal/bspwm
@@ -211,35 +232,35 @@ wrapping-scroll = false
 
 format-background = ${colors.background}
 
-label-mode-padding = 1
+label-mode-padding = 2
 label-mode-foreground = ${colors.black}
 label-mode-background = ${colors.red}
-label-mode-underline = ${colors.red}
+;label-mode-underline = ${colors.red}
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%
-label-focused-padding = 1
-label-focused-underline = ${colors.green}
-label-focused-foreground = ${colors.foreground}
-label-focused-background = ${colors.background}
+label-focused-padding = 2
+;label-focused-underline = ${colors.red}
+label-focused-foreground = ${colors.black}
+label-focused-background = ${colors.red}
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
-label-unfocused-padding = 1
-label-unfocused-underline = ${colors.gray}
+label-unfocused-padding = 2
+;label-unfocused-underline = ${colors.gray}
 label-unfocused-foreground = ${colors.foreground}
 label-unfocused-background = ${colors.background}
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
-label-visible-padding = 1
-label-visible-underline = ${colors.gray}
+label-visible-padding = 2
+;label-visible-underline = ${colors.gray}
 label-visible-foreground = ${colors.foreground}
 label-visible-background = ${colors.background}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %index%
-label-urgent-padding = 1
+label-urgent-padding = 2
 label-urgent-underline = ${colors.red}
 label-urgent-foreground = ${colors.foreground}
 label-urgent-background = ${colors.background}
@@ -247,27 +268,27 @@ label-urgent-background = ${colors.background}
 [module/mpd]
 type = internal/mpd
 
-format-online = <label-song> <toggle> <bar-progress>
-;format-playing = <label-song> <icon-pause>
-;format-stopped = <label-offline> <icon-play>
-;format-paused = <label-offline> <icon-play>
+;format-online = <toggle> <bar-progress>
+format-playing = <label-song> <icon-prev> <icon-stop> <icon-pause> <icon-next> <bar-progress>
+format-stopped = [mpd] <icon-play>
+format-paused = <label-song> <icon-play> <icon-stop> <bar-progress>
 
-icon-prev = <
-icon-stop = #
-icon-play = *
-icon-pause = #
-icon-next = >
+icon-prev = ⏪
+icon-stop = ⏹
+icon-play = ▶
+icon-pause = ▮▮
+icon-next = ⏩
 
 bar-progress-width = 5
 bar-progress-indicator = |
 bar-progress-fill = -
 bar-progress-empty = -
 
-label-song = "mpd"
-;label-song = %artist% - %title%
-;label-song-maxlen = 25
-;label-song-ellipsis = true
-label-offline = "mpd offline"
+;label-song =
+label-song = %artist% - %title%
+label-song-maxlen = 20
+label-song-ellipsis = true
+label-offline = "offline"
 
 ;label-song-foreground = ${colors.gray}
 
@@ -296,14 +317,25 @@ label-offline = "mpd offline"
 [module/cpu]
 type = internal/cpu
 interval = 10
-format-prefix = "cpu "
+
+format = <label> <ramp-coreload>
+format-prefix = "[cpu] "
 ;format-prefix-foreground = ${colors.gray}
 label = %percentage%%
+
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
 
 [module/memory]
 type = internal/memory
 interval = 10
-format-prefix = "mem "
+format-prefix = "[mem] "
 ;format-prefix-foreground = ${colors.gray}
 label = %percentage_used%%
 
@@ -358,37 +390,6 @@ time = %H:%M
 ;format-prefix-foreground = ${colors.foreground}
 ;format-underline = ${colors.blue}
 label = %date% %time%
-
-;[module/volume]
-;type = internal/volume
-;
-;;master-mixer = PCM
-;;speaker-mixer = PCM
-;
-;format-volume = <label-volume> <bar-volume>
-;;label-volume = VOL
-;;label-volume-foreground = ${root.foreground}
-;
-;;format-muted-prefix = ""
-;;format-muted-foreground = ${colors.foreground}
-;label-muted = muted
-;
-;bar-volume-width = 10
-;bar-volume-foreground-0 = #55aa55
-;bar-volume-foreground-1 = #55aa55
-;bar-volume-foreground-2 = #55aa55
-;bar-volume-foreground-3 = #55aa55
-;bar-volume-foreground-4 = #55aa55
-;bar-volume-foreground-5 = #f5a70a
-;bar-volume-foreground-6 = #ff5555
-;bar-volume-gradient = false
-;bar-volume-indicator = |
-;bar-volume-indicator-font = 2
-;bar-volume-fill = ─
-;bar-volume-fill-font = 2
-;bar-volume-empty = ─
-;bar-volume-empty-font = 2
-;bar-volume-empty-foreground = ${colors.foreground}
 
 ;[module/battery]
 ;type = internal/battery
@@ -466,4 +467,3 @@ ramp-foreground = ${colors.foreground}
 [global/wm]
 margin-top = 0
 margin-bottom = 0
-
