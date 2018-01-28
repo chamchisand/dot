@@ -10,15 +10,15 @@
 [colors]
 background = ${xrdb:background:#000000}
 foreground = ${xrdb:color1:#ffffff}
+warn       = ${xrdb:color6:#ffffff}
 
-transparent = #00000FF
 black = ${xrdb:color0:#000000}
 gray = ${xrdb:color8:#cccccc}
 white = ${xrdb:color7:#ffffff}
-red = ${xrdb:color1:#ff0000}
-green = ${xrdb:color2:#00ff00}
-blue = ${xrdb:color4:#0000ff}
-yellow = ${xrdb:color3:#ffff00}
+red = ${xrdb:color6:#ff0000}
+green = ${xrdb:color5:#00ff00}
+blue = ${xrdb:color1:#0000ff}
+yellow = ${xrdb:color4:#ffff00}
 
 [settings]
 screenchange-reload = true
@@ -51,7 +51,7 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 
 ;line-size = 0
-;line-color = ${colors.red}
+;line-color = ${colors.warn}
 
 border-top-size = 0
 border-bottom-size = 0
@@ -67,11 +67,10 @@ module-margin-right = 0
 
 font-0 = xos4 Terminus:pixelsize=12;2
 font-1 = NanumSquare:antialias=false:pixelsize=8;2
-font-2 = Font Awesome 5 Free:style=Solid:pixelsize=8:antialias=true;2
 
 modules-left = transmission
 modules-center = i3
-modules-right = mpd volume filesystem cpu memory date xkeyboard
+modules-right = mpd volume cpu memory filesystem date xkeyboard
 ;modules-right = filesystem xbacklight xkeyboard memory cpu battery temperature date powermenu
 
 tray-position = right
@@ -111,7 +110,7 @@ type = custom/script
 exec = ~/bin/tr-bar
 
 format = <label>
-format-prefix = " "
+format-prefix =
 label = %output%
 interval = 60
 
@@ -130,26 +129,11 @@ scroll-up = ~/bin/volume 4 && polybar-msg -p %pid% hook volume 1
 scroll-down = ~/bin/volume 5 && polybar-msg -p %pid% hook volume 1
 
 ;[module/volume]
-;type = custom/script
-;
-;format = <label>
-;format-prefix = "vol "
-;format-prefix-foreground = ${colors.foreground}
-;format-underline = ${colors.blue}
-;
-;label = %output%
-;exec = ~/bin/volume
-;interval = 60
-;
-;click-left = ~/bin/volume 1
-;scroll-up = ~/bin/volume 4
-;scroll-down = ~/bin/volume 5
-
-;[module/volume]
 ;type = internal/volume
 ;
+;master-soundcard = default
 ;master-mixer = PCM
-;speaker-mixer = PCM
+;;speaker-mixer = PCM
 ;
 ;format-volume = <label-volume> <bar-volume>
 ;;label-volume = VOL
@@ -158,27 +142,10 @@ scroll-down = ~/bin/volume 5 && polybar-msg -p %pid% hook volume 1
 ;;format-muted-prefix = ""
 ;;format-muted-foreground = ${colors.foreground}
 ;label-muted = muted
-;
-;bar-volume-width = 10
-;bar-volume-foreground-0 = #55aa55
-;bar-volume-foreground-1 = #55aa55
-;bar-volume-foreground-2 = #55aa55
-;bar-volume-foreground-3 = #55aa55
-;bar-volume-foreground-4 = #55aa55
-;bar-volume-foreground-5 = #f5a70a
-;bar-volume-foreground-6 = #ff5555
-;bar-volume-gradient = false
-;bar-volume-indicator = |
-;bar-volume-indicator-font = 2
-;bar-volume-fill = ─
-;bar-volume-fill-font = 2
-;bar-volume-empty = ─
-;bar-volume-empty-font = 2
-;bar-volume-empty-foreground = ${colors.foreground}
 
-;[module/xwindow]
-;type = internal/xwindow
-;label = %title:0:30:...%
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -190,7 +157,7 @@ label-layout = %layout%
 label-indicator-margin-left = 1
 ;label-indicator-foreground = ${colors.background}
 ;label-indicator-background = ${colors.blue}
-;label-indicator-underline = ${colors.red}
+;label-indicator-underline = ${colors.warn}
 
 [module/filesystem]
 type = internal/fs
@@ -215,7 +182,7 @@ label-unmounted = %mountpoint% not mounted
 ;label-occupied-padding = 1
 ;
 ;label-urgent = %index%!
-;label-urgent-background = ${colors.red}
+;label-urgent-background = ${colors.warn}
 ;label-urgent-padding = 1
 ;
 ;label-empty = %index%
@@ -235,15 +202,15 @@ format-background = ${colors.background}
 
 label-mode-padding = 2
 label-mode-foreground = ${colors.black}
-label-mode-background = ${colors.red}
-;label-mode-underline = ${colors.red}
+label-mode-background = ${colors.foreground}
+;label-mode-underline = ${colors.foreground}
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%
 label-focused-padding = 2
-;label-focused-underline = ${colors.red}
-label-focused-foreground = ${colors.black}
-label-focused-background = ${colors.red}
+;label-focused-underline = ${colors.foreground}
+label-focused-foreground = ${colors.background}
+label-focused-background = ${colors.foreground}
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
@@ -262,8 +229,8 @@ label-visible-background = ${colors.background}
 ; urgent = Workspace with urgency hint set
 label-urgent = %index%
 label-urgent-padding = 2
-label-urgent-underline = ${colors.red}
-label-urgent-foreground = ${colors.foreground}
+;label-urgent-underline = ${colors.warn}
+label-urgent-foreground = ${colors.warn}
 label-urgent-background = ${colors.background}
 
 [module/mpd]
@@ -272,23 +239,24 @@ type = internal/mpd
 ;format-online = <toggle> <bar-progress>
 format-offline = <label-offline>
 format-playing = <label-song> <icon-prev> <icon-stop> <icon-pause> <icon-next> <bar-progress>
-format-stopped = <icon-play> mpd offline
+format-stopped = mpd: <icon-play>
 format-paused = <label-song> <icon-play> <icon-stop> <bar-progress>
 
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
+icon-prev = <
+icon-stop = []
+icon-play = >
+icon-pause = ||
+icon-next = >
 
-bar-progress-width = 5
+bar-progress-width = 10
 bar-progress-indicator = |
-bar-progress-fill = -
-bar-progress-empty = -
+bar-progress-fill = |
+bar-progress-empty = |
+bar-progress-empty-foreground = ${colors.gray}
 
 ;label-song =
 label-song = %artist% - %title%
-label-song-maxlen = 20
+label-song-maxlen = 10
 label-song-ellipsis = true
 label-offline = "mpd offline"
 
@@ -318,26 +286,49 @@ label-offline = "mpd offline"
 type = internal/cpu
 interval = 10
 
-format = <label> <ramp-coreload>
-format-prefix = "cpu:"
-;format-prefix-foreground = ${colors.gray}
-label = %percentage%%
+format = <bar-load>
+format-prefix = cpu:
+label = %percentage-cores%
 
-ramp-coreload-0 = ▁
-ramp-coreload-1 = ▂
-ramp-coreload-2 = ▃
-ramp-coreload-3 = ▄
-ramp-coreload-4 = ▅
-ramp-coreload-5 = ▆
-ramp-coreload-6 = ▇
-ramp-coreload-7 = █
+bar-load-width = 10
+bar-load-empty = |
+bar-load-fill = |
+bar-load-indicator = |
+
+bar-load-empty-foreground = ${colors.gray}
+bar-load-fill-foreground = ${colors.foreground}
+bar-load-indicator-foreground = ${colors.foreground}
+
+;ramp-coreload-0 = ▁
+;ramp-coreload-1 = ▂
+;ramp-coreload-2 = ▃
+;ramp-coreload-3 = ▄
+;ramp-coreload-4 = ▅
+;ramp-coreload-5 = ▆
+;ramp-coreload-6 = ▇
+;ramp-coreload-7 = █
+;
+;ramp-coreload-4-foreground = ${colors.warn}
+;ramp-coreload-5-foreground = ${colors.warn}
+;ramp-coreload-6-foreground = ${colors.warn}
+;ramp-coreload-7-foreground = ${colors.warn}
 
 [module/memory]
 type = internal/memory
 interval = 10
+format = <bar-used>
 format-prefix = "mem:"
-;format-prefix-foreground = ${colors.gray}
-label = %percentage_used%%
+label = %gb_used%/%gb_free%
+
+bar-used-width = 10
+bar-used-indicator = |
+bar-used-foreground-0 = ${colors.foreground}
+bar-used-foreground-1 = ${colors.foreground}
+bar-used-foreground-2 = ${colors.red}
+bar-used-foreground-3 = ${colors.red}
+bar-used-fill = |
+bar-used-empty = |
+bar-used-empty-foreground = ${colors.gray}
 
 ;[module/wlan]
 ;type = internal/network
@@ -420,22 +411,12 @@ label = %date% %time%
 
 [module/temperature]
 type = internal/temperature
+interval = 10
 thermal-zone = 0
-warn-temperature = 60
 
-format = <ramp> <label>
-;format-underline = #f50a4d
-format-warn = <ramp> <label-warn>
-;format-warn-underline = ${self.format-underline}
-
+format = <label>
+format-prefix = temp:
 label = %temperature%
-label-warn = %temperature%
-label-warn-foreground = ${colors.red}
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground}
 
 ;[module/powermenu]
 ;type = custom/menu
@@ -443,9 +424,9 @@ ramp-foreground = ${colors.foreground}
 ;format-spacing = 1
 ;
 ;label-open = 
-;label-open-foreground = ${colors.red}
+;label-open-foreground = ${colors.warn}
 ;label-close =  cancel
-;label-close-foreground = ${colors.red}
+;label-close-foreground = ${colors.warn}
 ;label-separator = |
 ;label-separator-foreground = ${colors.foreground}
 ;
