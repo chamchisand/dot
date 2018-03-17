@@ -8,7 +8,6 @@ set background=dark
 colorscheme nord
 
 let mapleader=','
-set background=dark
 set pastetoggle=<Leader>p
 set softtabstop=2
 set tabstop=2
@@ -27,12 +26,25 @@ set hlsearch
 "set foldnestmax=5
 "set colorcolumn=80
 
+hi Visual ctermbg=green ctermfg=black
+hi Folded ctermbg=magenta ctermfg=black
+hi ExtraWhitespace ctermbg=red
+"hi MatchParen ctermfg=red ctermbg=none
+"hi SpecialKey ctermfg=240
+"hi Directory guifg=none ctermfg=red
+"hi ColorColumn ctermbg=darkgray
+"let &colorcolumn=join(range(81,999),",")
+"hi ColorColumn ctermbg=darkgray
+
+" blackhole register
 vnoremap p "_dP
 vnoremap P "_dP
 
-" NERDTree
-let NERDTreeShowLineNumbers=0
-let NERDTreeShowHidden=0
+"=========="
+" NERDTree "
+"=========="
+let NERDTreeShowLineNumbers = 0
+let NERDTreeShowHidden = 0
 
 let g:NERDCompactSexyComs = 1
 let g:NERDSpaceDelims = 1
@@ -54,20 +66,10 @@ augroup go
   autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 augroup END
 
-hi Visual ctermbg=magenta ctermfg=white
-hi Folded ctermbg=red  ctermfg=white
-hi ExtraWhitespace ctermbg=red
-"hi MatchParen ctermfg=red ctermbg=none
-"hi SpecialKey ctermfg=240
-"hi Directory guifg=none ctermfg=red
-"hi ColorColumn ctermbg=darkgray
-"let &colorcolumn=join(range(81,999),",")
-"hi ColorColumn ctermbg=darkgray
-
 "========="
 " airline "
 "========="
-let g:airline_theme='hybrid'
+let g:airline_theme = 'nord'
 let g:airline#extensions#tabline#enabled = 1
 
 "==========="
@@ -83,7 +85,7 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_generic = 1
 let g:syntastic_javascript_eslint_exec = '/bin/ls'
 let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
