@@ -3,10 +3,9 @@ execute pathogen#infect()
 filetype plugin on
 syntax on
 
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
+set t_Co=256
+set background=dark
+colorscheme nord
 
 let mapleader=','
 set background=dark
@@ -65,23 +64,34 @@ hi ExtraWhitespace ctermbg=red
 "let &colorcolumn=join(range(81,999),",")
 "hi ColorColumn ctermbg=darkgray
 
-" airline
+"========="
+" airline "
+"========="
 let g:airline_theme='hybrid'
 let g:airline#extensions#tabline#enabled = 1
 
-" syntastic
+"==========="
+" syntastic "
+"==========="
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_go_checkers = ['go', 'golint', 'errcheck']
-let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" Tabular
+let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_javascript_eslint_generic = 1
+let g:syntastic_javascript_eslint_exec = '/bin/ls'
+let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
+let g:syntastic_javascript_eslint_args='-f compact'
+
+"========="
+" Tabular "
+"========="
 if exists(":Tabularize")
 	nmap <Leader>a= :Tabularize /=<CR>
 	vmap <Leader>a= :Tabularize /=<CR>
@@ -89,16 +99,22 @@ if exists(":Tabularize")
 	vmap <Leader>a: :Tabularize /:/l0r1<CR>
 endif
 
-" indentation
+"============="
+" indentation "
+"============="
 "set list
 "let &lcs = 'tab:¦ '
 let g:indentLine_color_term = 240
 let g:indentLine_enabled = 1
 
-" vim-json
+"=========="
+" vim-json "
+"=========="
 let g:vim_json_syntax_conceal = 0
 
-" neocomplete
+"============="
+" neocomplete "
+"============="
 let g:neocomplete#enable_at_startup = 1
 
 "Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
