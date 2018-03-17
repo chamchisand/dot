@@ -1,5 +1,5 @@
 Xft.antialias: 1
-Xft.autohint: 0
+Xft.autohint: 1
 Xft.dpi: 96
 Xft.hinting: 1
 Xft.hintstyle: hintfull
@@ -8,21 +8,17 @@ Xft.rgba: rgb
 
 ! c o l o r -  s e t t i n g s
 
-#include "~/github/base16-xresources/xresources/base16-ocean-256.Xresources"
+#include "/home/andrew/github/base16-xresources/xresources/base16-ocean-256.Xresources"
 
 ! u r x v t
 
 URxvt*scrollBar: false
-!URxvt*font: xft:xos4 Terminus:size=8:antialias=false
-!URxvt*boldFont: xft:xos4 Terminus:size=8:antialias=false
-!URxvt*italicFont: xft:xos4 Terminus:size=8:antialias=false
-!URxvt*boldItalicFont: xft:xos4 Terminus:size=8:antialias=false
+URxvt*font: xft:xos4 Terminus:size=8:antialias=false,xft:NanumSquare:antialias=false
+URxvt*boldFont: xft:xos4 Terminus:size=8:antialias=false,xft:NanumSquare:antialias=false
+URxvt*italicFont: xft:xos4 Terminus:size=8:antialias=false,xft:NanumSquare:antialias=false
+URxvt*boldItalicFont: xft:xos4 Terminus:size=8:antialias=false,xft:NanumSquare:antialias=false
 
-URxvt*font: xft:xos4 Terminus:size=8:antialias=false,xft:Noto Sans CJK KR:antialias=false
-URxvt*boldFont: xft:xos4 Terminus:size=8:antialias=false,xft:Noto Sans Mono CJK KR:antialias=false
-URxvt*italicFont: xft:xos4 Terminus:size=8:antialias=false,xft:Noto Sans Mono CJK KR:antialias=false
-URxvt*boldItalicFont: xft:xos4 Terminus:size=8:antialias=false,xft:Noto Sans Mono CJK KR:antialias=false
-
+!URxvt*letterSpace: 1
 !URxvt*underlineColor: yellow
 
 !URxvt.transparent:   true
@@ -46,8 +42,8 @@ URxvt*boldItalicFont: xft:xos4 Terminus:size=8:antialias=false,xft:Noto Sans Mon
 
 rofi.font: xos4 Terminus 8
 rofi.color-enabled: true
-rofi.color-window: base00, base00, base04
-rofi.color-normal: base00, base04, base00, base04, base00
+rofi.color-window: base00, base00, base0D
+rofi.color-normal: base00, base0D, base00, base0D, base00
 !rofi.color-window: base00, base00, base0E
 !rofi.color-normal: base00, base0E, base00, base0E, base00
 !rofi.color-active: base00, #268bd2, base00, #268bd2, #205171
