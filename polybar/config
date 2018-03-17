@@ -9,16 +9,17 @@
 
 [colors]
 background = ${xrdb:background:#000000}
-foreground = ${xrdb:color1:#ffffff}
-warn       = ${xrdb:color6:#ffffff}
+foreground = ${xrdb:color4:#ffffff}
+warn       = ${xrdb:color1:#ffffff}
 
 black = ${xrdb:color0:#000000}
 gray = ${xrdb:color8:#cccccc}
 white = ${xrdb:color7:#ffffff}
-red = ${xrdb:color6:#ff0000}
-green = ${xrdb:color5:#00ff00}
-blue = ${xrdb:color1:#0000ff}
-yellow = ${xrdb:color4:#ffff00}
+red = ${xrdb:color1:#ff0000}
+green = ${xrdb:color2:#00ff00}
+blue = ${xrdb:color4:#0000ff}
+yellow = ${xrdb:color3:#ffff00}
+magenta = ${xrdb:color5:#ffff00}
 
 [settings]
 screenchange-reload = true
@@ -68,7 +69,7 @@ module-margin-right = 0
 font-0 = xos4 Terminus:pixelsize=12;2
 font-1 = NanumSquare:antialias=false:pixelsize=8;2
 
-modules-left = transmission
+modules-left = xwindow transmission
 modules-center = i3
 modules-right = mpd volume cpu memory filesystem date xkeyboard
 ;modules-right = filesystem xbacklight xkeyboard memory cpu battery temperature date powermenu
@@ -118,15 +119,15 @@ interval = 60
 type = custom/ipc
 
 format = <output>
-format-prefix = "vol:"
+format-prefix = "[vol] "
 output = %output%
 
 hook-0 = echo $(~/bin/volume)
 initial = 1
 
-click-left = ~/bin/volume 1 && polybar-msg -p %pid% hook volume 1
-scroll-up = ~/bin/volume 4 && polybar-msg -p %pid% hook volume 1
-scroll-down = ~/bin/volume 5 && polybar-msg -p %pid% hook volume 1
+click-left = ~/bin/volume -m 1 && polybar-msg -p %pid% hook volume 1
+scroll-up = ~/bin/volume -m 4 && polybar-msg -p %pid% hook volume 1
+scroll-down = ~/bin/volume -m 5 && polybar-msg -p %pid% hook volume 1
 
 ;[module/volume]
 ;type = internal/volume
@@ -150,11 +151,10 @@ label = %title:0:30:...%
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
-
 label-layout = %layout%
 
 ;label-indicator-padding = 1
-label-indicator-margin-left = 1
+;label-indicator-margin-left = 1
 ;label-indicator-foreground = ${colors.background}
 ;label-indicator-background = ${colors.blue}
 ;label-indicator-underline = ${colors.warn}
@@ -167,8 +167,8 @@ spacing = 1
 mount-0 = /
 mount-1 = /home
 
-label-mounted = %mountpoint%:%percentage_used%%
-label-unmounted = %mountpoint% not mounted
+label-mounted = [%mountpoint%] %percentage_used%%
+label-unmounted =
 
 ;[module/bspwm]
 ;type = internal/bspwm
@@ -236,11 +236,11 @@ label-urgent-background = ${colors.background}
 [module/mpd]
 type = internal/mpd
 
-;format-online = <toggle> <bar-progress>
-format-offline = <label-offline>
-format-playing = <label-song> <icon-prev> <icon-stop> <icon-pause> <icon-next> <bar-progress>
-format-stopped = mpd: <icon-play>
-format-paused = <label-song> <icon-play> <icon-stop> <bar-progress>
+;format-online = <toggle> <icon-stop>
+;format-offline = <label-offline>
+format-playing = <label-song> <icon-prev> <icon-stop> <icon-pause> <icon-next>
+format-stopped = [mpd] <icon-play>
+format-paused = <label-song> <icon-play> <icon-stop>
 
 icon-prev = <
 icon-stop = []
@@ -248,17 +248,16 @@ icon-play = >
 icon-pause = ||
 icon-next = >
 
-bar-progress-width = 10
-bar-progress-indicator = |
-bar-progress-fill = |
-bar-progress-empty = |
-bar-progress-empty-foreground = ${colors.gray}
+;bar-progress-width = 10
+;bar-progress-indicator = |
+;bar-progress-fill = |
+;bar-progress-empty = |
+;bar-progress-empty-foreground = ${colors.gray}
 
-;label-song =
 label-song = %artist% - %title%
 label-song-maxlen = 10
 label-song-ellipsis = true
-label-offline = "mpd offline"
+label-offline =
 
 ;[module/xbacklight]
 ;type = internal/xbacklight
@@ -286,18 +285,18 @@ label-offline = "mpd offline"
 type = internal/cpu
 interval = 10
 
-format = <bar-load>
-format-prefix = cpu:
+format = <label>
+format-prefix = "[cpu] "
 label = %percentage-cores%
 
-bar-load-width = 10
-bar-load-empty = |
-bar-load-fill = |
-bar-load-indicator = |
+;bar-load-width = 10
+;bar-load-empty = |
+;bar-load-fill = |
+;bar-load-indicator = |
 
-bar-load-empty-foreground = ${colors.gray}
-bar-load-fill-foreground = ${colors.foreground}
-bar-load-indicator-foreground = ${colors.foreground}
+;bar-load-empty-foreground = ${colors.gray}
+;bar-load-fill-foreground = ${colors.foreground}
+;bar-load-indicator-foreground = ${colors.foreground}
 
 ;ramp-coreload-0 = ▁
 ;ramp-coreload-1 = ▂
@@ -307,7 +306,7 @@ bar-load-indicator-foreground = ${colors.foreground}
 ;ramp-coreload-5 = ▆
 ;ramp-coreload-6 = ▇
 ;ramp-coreload-7 = █
-;
+
 ;ramp-coreload-4-foreground = ${colors.warn}
 ;ramp-coreload-5-foreground = ${colors.warn}
 ;ramp-coreload-6-foreground = ${colors.warn}
@@ -316,19 +315,19 @@ bar-load-indicator-foreground = ${colors.foreground}
 [module/memory]
 type = internal/memory
 interval = 10
-format = <bar-used>
-format-prefix = "mem:"
-label = %gb_used%/%gb_free%
+format = <label>
+format-prefix = "[mem] "
+label = %percentage_used%%
 
-bar-used-width = 10
-bar-used-indicator = |
-bar-used-foreground-0 = ${colors.foreground}
-bar-used-foreground-1 = ${colors.foreground}
-bar-used-foreground-2 = ${colors.red}
-bar-used-foreground-3 = ${colors.red}
-bar-used-fill = |
-bar-used-empty = |
-bar-used-empty-foreground = ${colors.gray}
+;bar-used-width = 10
+;bar-used-indicator = |
+;bar-used-foreground-0 = ${colors.foreground}
+;bar-used-foreground-1 = ${colors.foreground}
+;bar-used-foreground-2 = ${colors.red}
+;bar-used-foreground-3 = ${colors.red}
+;bar-used-fill = |
+;bar-used-empty = |
+;bar-used-empty-foreground = ${colors.gray}
 
 ;[module/wlan]
 ;type = internal/network
@@ -418,32 +417,32 @@ format = <label>
 format-prefix = temp:
 label = %temperature%
 
-;[module/powermenu]
-;type = custom/menu
-;
-;format-spacing = 1
-;
-;label-open = 
-;label-open-foreground = ${colors.warn}
-;label-close =  cancel
-;label-close-foreground = ${colors.warn}
-;label-separator = |
-;label-separator-foreground = ${colors.foreground}
-;
-;menu-0-0 = reboot
-;menu-0-0-exec = menu-open-1
-;menu-0-1 = power off
-;menu-0-1-exec = menu-open-2
-;
-;menu-1-0 = cancel
-;menu-1-0-exec = menu-open-0
-;menu-1-1 = reboot
-;menu-1-1-exec = sudo reboot
-;
-;menu-2-0 = power off
-;menu-2-0-exec = sudo poweroff
-;menu-2-1 = cancel
-;menu-2-1-exec = menu-open-0
+[module/powermenu]
+type = custom/menu
+
+format-spacing = 1
+
+label-open = #
+label-open-foreground = ${colors.warn}
+label-close = #
+label-close-foreground = ${colors.warn}
+label-separator = |
+label-separator-foreground = ${colors.foreground}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
 
 [global/wm]
 margin-top = 0
