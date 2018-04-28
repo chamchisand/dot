@@ -45,7 +45,7 @@ vnoremap P "_dP
 "=========="
 let NERDTreeShowLineNumbers = 0
 let NERDTreeShowHidden = 0
-
+let NERDTreeIgnore = ['__pycache__$', '\.pyc$']
 let g:NERDCompactSexyComs = 1
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
