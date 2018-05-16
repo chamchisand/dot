@@ -36,16 +36,19 @@ hi ExtraWhitespace ctermbg=red
 "let &colorcolumn=join(range(81,999),",")
 "hi ColorColumn ctermbg=darkgray
 
-" blackhole register
+" BLACKHOLE REGISTER "
 vnoremap p "_dP
 vnoremap P "_dP
 
-"=========="
-" NERDTree "
-"=========="
+" FLAKE8 "
+let g:flake8_show_quickfix=0
+let g:flake8_show_in_file=0
+let g:flake8_show_in_gutter=1
+
+" NERDTREE "
 let NERDTreeShowLineNumbers = 0
 let NERDTreeShowHidden = 0
-let NERDTreeIgnore = ['__pycache__$', '\.pyc$']
+let NERDTreeIgnore = ['egg-info', '__pycache__$', '\.pyc$']
 let g:NERDCompactSexyComs = 1
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
@@ -66,15 +69,11 @@ augroup go
   autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 augroup END
 
-"========="
-" airline "
-"========="
+" AIRLINE "
 let g:airline_theme = 'nord'
 let g:airline#extensions#tabline#enabled = 1
 
-"==========="
-" syntastic "
-"==========="
+" SYNTASTIC "
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -91,9 +90,7 @@ let g:syntastic_javascript_eslint_exec = '/bin/ls'
 let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
 let g:syntastic_javascript_eslint_args='-f compact'
 
-"========="
-" Tabular "
-"========="
+" TABULAR "
 if exists(":Tabularize")
 	nmap <Leader>a= :Tabularize /=<CR>
 	vmap <Leader>a= :Tabularize /=<CR>
@@ -101,25 +98,18 @@ if exists(":Tabularize")
 	vmap <Leader>a: :Tabularize /:/l0r1<CR>
 endif
 
-"============="
-" indentation "
-"============="
+" INDENTATION "
 "set list
 "let &lcs = 'tab:¦ '
 let g:indentLine_color_term = 240
 let g:indentLine_enabled = 1
 
-"=========="
-" vim-json "
-"=========="
+" VIM-JSON "
 let g:vim_json_syntax_conceal = 0
 
-"============="
-" neocomplete "
-"============="
+" NEOCOMPLETE "
 let g:neocomplete#enable_at_startup = 1
 
-"Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 " Use neocomplete.
