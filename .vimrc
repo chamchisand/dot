@@ -21,6 +21,7 @@ set foldmethod=indent
 set nofoldenable
 set showmatch
 set hlsearch
+set completeopt-=preview
 "set showcmd
 "set foldlevelstart=1
 "set foldnestmax=5
@@ -106,3 +107,12 @@ let g:indentLine_enabled = 1
 
 " VIM-JSON "
 let g:vim_json_syntax_conceal = 0
+
+" YOUCOMPLETEME "
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_always_populate_location_list = 0
+let g:ycm_open_loclist_on_ycm_diags = 0
+let g:ycm_complete_in_strings = 0
+let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_keep_logfiles = 0
+let g:ycm_log_level = 'error'
