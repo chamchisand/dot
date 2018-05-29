@@ -35,11 +35,14 @@ hi ExtraWhitespace ctermbg=red
 "hi Directory guifg=none ctermfg=red
 "hi ColorColumn ctermbg=darkgray
 "let &colorcolumn=join(range(81,999),",")
-"hi ColorColumn ctermbg=darkgray
 
 " BLACKHOLE REGISTER "
 vnoremap p "_dP
 vnoremap P "_dP
+
+" ACK "
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
 
 " FLAKE8 "
 let g:flake8_show_quickfix=0
@@ -71,7 +74,7 @@ augroup go
 augroup END
 
 " AIRLINE "
-let g:airline_theme = 'nord'
+let g:airline_theme = 'bubblegum'
 let g:airline#extensions#tabline#enabled = 1
 
 " SYNTASTIC "
@@ -99,11 +102,11 @@ if exists(":Tabularize")
 	vmap <Leader>a: :Tabularize /:/l0r1<CR>
 endif
 
-" INDENTATION "
-"set list
-"let &lcs = 'tab:¦ '
-let g:indentLine_color_term = 240
-let g:indentLine_enabled = 1
+" INDENT "
+" set list
+" let &lcs = 'tab:¦ '
+" let g:indentLine_color_term = 240
+" let g:indentLine_enabled = 1
 
 " VIM-JSON "
 let g:vim_json_syntax_conceal = 0
