@@ -105,8 +105,8 @@ endif
 " INDENT "
 " set list
 " let &lcs = 'tab:¦ '
-" let g:indentLine_color_term = 240
-" let g:indentLine_enabled = 1
+let g:indentLine_color_term = 240
+let g:indentLine_enabled = 1
 
 " VIM-JSON "
 let g:vim_json_syntax_conceal = 0
