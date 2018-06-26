@@ -8,6 +8,7 @@ set background=dark
 colorscheme nord
 
 let mapleader=','
+set encoding=utf-8
 set pastetoggle=<Leader>p
 set softtabstop=2
 set tabstop=2
@@ -22,19 +23,21 @@ set nofoldenable
 set showmatch
 set hlsearch
 set completeopt-=preview
+"set cursorline
 "set showcmd
 "set foldlevelstart=1
 "set foldnestmax=5
 "set colorcolumn=80
 
 hi Visual ctermbg=green ctermfg=black
-hi Folded ctermbg=magenta ctermfg=black
 hi ExtraWhitespace ctermbg=red
+"hi Folded ctermbg=235 ctermfg=black
+"hi CursorLine ctermbg=168
 "hi MatchParen ctermfg=red ctermbg=none
 "hi SpecialKey ctermfg=240
 "hi Directory guifg=none ctermfg=red
-"hi ColorColumn ctermbg=darkgray
 "let &colorcolumn=join(range(81,999),",")
+"hi ColorColumn ctermbg=darkgray
 
 " BLACKHOLE REGISTER "
 vnoremap p "_dP
@@ -112,10 +115,15 @@ let g:indentLine_enabled = 1
 let g:vim_json_syntax_conceal = 0
 
 " YOUCOMPLETEME "
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_always_populate_location_list = 0
-let g:ycm_open_loclist_on_ycm_diags = 0
-let g:ycm_complete_in_strings = 0
-let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_keep_logfiles = 0
-let g:ycm_log_level = 'error'
+" let g:ycm_show_diagnostics_ui = 0
+" let g:ycm_always_populate_location_list = 0
+" let g:ycm_open_loclist_on_ycm_diags = 0
+" let g:ycm_complete_in_strings = 0
+" let g:ycm_add_preview_to_completeopt = 0
+" let g:ycm_keep_logfiles = 0
+" let g:ycm_log_level = 'error'
+
+" DEOPLETE "
+let g:deoplete#enable_at_startup = 1
+inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
