@@ -1,9 +1,40 @@
-execute pathogen#infect()
+" :PluginList
+" :PluginInstall
+" :PluginSearch foo
+" :PluginClean
 
-filetype plugin on
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'shougo/deoplete.nvim'
+Plugin 'zchee/deoplete-jedi'
+Plugin 'carlitux/deoplete-ternjs'
+Plugin 'yggdroot/indentline'
+Plugin 'ddollar/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'arcticicestudio/nord-vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'godlygeek/tabular'
+Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'nvie/vim-flake8'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'pangloss/vim-javascript'
+Plugin 'leshill/vim-json'
+Plugin 'ntpeters/vim-better-whitespace'
+
+call vundle#end()
+
+filetype plugin indent on
+" filetype plugin on
+
 syntax on
-
-set t_Co=256
 set background=dark
 colorscheme nord
 
@@ -23,16 +54,16 @@ set nofoldenable
 set showmatch
 set hlsearch
 set completeopt-=preview
-"set cursorline
+set cursorline
 "set showcmd
 "set foldlevelstart=1
 "set foldnestmax=5
 "set colorcolumn=80
 
 hi Visual ctermbg=green ctermfg=black
-hi ExtraWhitespace ctermbg=red
+"hi ExtraWhitespace ctermbg=red
 "hi Folded ctermbg=235 ctermfg=black
-"hi CursorLine ctermbg=168
+"hi CursorLine ctermbg=235
 "hi MatchParen ctermfg=red ctermbg=none
 "hi SpecialKey ctermfg=240
 "hi Directory guifg=none ctermfg=red
@@ -69,7 +100,7 @@ nmap <Leader>w <C-w>w
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd Filetype json setlocal ts=2 sw=2 expandtab
-autocmd BufWritePre * StripWhitespace
+" autocmd BufWritePre * StripWhitespace
 
 augroup go
   autocmd!
@@ -105,11 +136,22 @@ if exists(":Tabularize")
 	vmap <Leader>a: :Tabularize /:/l0r1<CR>
 endif
 
+" BETTER WHITESPACE "
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
+
 " INDENT "
 " set list
 " let &lcs = 'tab:¦ '
 let g:indentLine_color_term = 240
 let g:indentLine_enabled = 1
+
+" VIM-JAVASCRIPT "
+let g:javascript_plugin_jsdoc = 1
+augroup javascript_folding
+  au!
+  au FileType javascript setlocal foldmethod=syntax
+augroup END
 
 " VIM-JSON "
 let g:vim_json_syntax_conceal = 0
