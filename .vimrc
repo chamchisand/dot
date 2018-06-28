@@ -1,8 +1,3 @@
-" :PluginList
-" :PluginInstall
-" :PluginSearch foo
-" :PluginClean
-
 set nocompatible
 filetype off
 
@@ -18,26 +13,26 @@ Plugin 'carlitux/deoplete-ternjs'
 Plugin 'yggdroot/indentline'
 Plugin 'ddollar/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'arcticicestudio/nord-vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'godlygeek/tabular'
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'nvie/vim-flake8'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'pangloss/vim-javascript'
 Plugin 'leshill/vim-json'
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'digitaltoad/vim-pug'
+Plugin 'tpope/vim-fugitive'
+Plugin 'itchyny/lightline.vim'
+Plugin 'arcticicestudio/nord-vim'
+Plugin 'w0rp/ale'
 
 call vundle#end()
 
 filetype plugin indent on
-" filetype plugin on
-
 syntax on
+
+set t_Co=256
 set background=dark
 colorscheme nord
-
 let mapleader=','
 set encoding=utf-8
 set pastetoggle=<Leader>p
@@ -54,7 +49,8 @@ set nofoldenable
 set showmatch
 set hlsearch
 set completeopt-=preview
-set cursorline
+set noshowmode
+"set cursorline
 "set showcmd
 "set foldlevelstart=1
 "set foldnestmax=5
@@ -78,10 +74,8 @@ vnoremap P "_dP
 cnoreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
 
-" FLAKE8 "
-let g:flake8_show_quickfix=0
-let g:flake8_show_in_file=0
-let g:flake8_show_in_gutter=1
+" LIGHTLINE "
+let g:lightline = {'colorscheme': 'jellybeans'}
 
 " NERDTREE "
 let NERDTreeShowLineNumbers = 0
@@ -99,34 +93,21 @@ nmap <Leader>w <C-w>w
 
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd Filetype json setlocal ts=2 sw=2 expandtab
-" autocmd BufWritePre * StripWhitespace
 
-augroup go
-  autocmd!
-  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
-augroup END
-
-" AIRLINE "
-let g:airline_theme = 'bubblegum'
-let g:airline#extensions#tabline#enabled = 1
-
-" SYNTASTIC "
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_go_checkers = ['go', 'golint', 'errcheck']
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_generic = 1
-let g:syntastic_javascript_eslint_exec = '/bin/ls'
-let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
-let g:syntastic_javascript_eslint_args='-f compact'
+" ALE "
+let g:ale_enabled = 1
+let g:ale_linters = {
+\'javascript': ['eslint'],
+\'python': ['flake8']
+\}
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_save = 1
+let g:ale_open_list = 0
+let g:ale_set_loclist = 1
+let g:ale_set_quickfix = 0
+let g:ale_warn_about_trailing_whitespace = 0
+let g:ale_warn_about_trailing_blank_lines = 0
 
 " TABULAR "
 if exists(":Tabularize")
@@ -148,24 +129,21 @@ let g:indentLine_enabled = 1
 
 " VIM-JAVASCRIPT "
 let g:javascript_plugin_jsdoc = 1
-augroup javascript_folding
-  au!
-  au FileType javascript setlocal foldmethod=syntax
-augroup END
 
 " VIM-JSON "
 let g:vim_json_syntax_conceal = 0
-
-" YOUCOMPLETEME "
-" let g:ycm_show_diagnostics_ui = 0
-" let g:ycm_always_populate_location_list = 0
-" let g:ycm_open_loclist_on_ycm_diags = 0
-" let g:ycm_complete_in_strings = 0
-" let g:ycm_add_preview_to_completeopt = 0
-" let g:ycm_keep_logfiles = 0
-" let g:ycm_log_level = 'error'
 
 " DEOPLETE "
 let g:deoplete#enable_at_startup = 1
 inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+
+augroup go
+  autocmd!
+  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+augroup END
+
+augroup javascript_folding
+  au!
+  au FileType javascript setlocal foldmethod=syntax
+augroup END
