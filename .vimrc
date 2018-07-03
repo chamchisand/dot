@@ -81,25 +81,25 @@ let g:lightline = {'colorscheme': 'jellybeans'}
 let NERDTreeShowLineNumbers = 0
 let NERDTreeShowHidden = 0
 let NERDTreeIgnore = ['egg-info', '__pycache__$', '\.pyc$']
-let g:NERDCompactSexyComs = 1
-let g:NERDSpaceDelims = 1
-let g:NERDDefaultAlign = 'left'
-let g:NERDCommentEmptyLines = 1
 let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '-'
 
 map <C-n> :NERDTreeToggle<CR>
 nmap <Leader>w <C-w>w
-
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
+" NERD COMMENTER "
+let g:NERDSpaceDelims = 0
+let g:NERDCompactSexyComs = 0
+let g:NERDDefaultAlign = 'left'
+let g:NERDCommentEmptyLines = 1
+let g:NERDTrimTrailingWhitespace = 0
+let g:NERDToggleCheckAllLines = 1
+
 " ALE "
 let g:ale_enabled = 1
-let g:ale_linters = {
-\'javascript': ['eslint'],
-\'python': ['flake8']
-\}
+let g:ale_linters = {'javascript': ['eslint'], 'python': ['flake8']}
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
