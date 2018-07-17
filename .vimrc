@@ -11,7 +11,6 @@ Plugin 'shougo/deoplete.nvim'
 Plugin 'zchee/deoplete-jedi'
 Plugin 'carlitux/deoplete-ternjs'
 Plugin 'yggdroot/indentline'
-Plugin 'ddollar/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'godlygeek/tabular'
@@ -24,9 +23,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'itchyny/lightline.vim'
 Plugin 'arcticicestudio/nord-vim'
 Plugin 'w0rp/ale'
+Plugin 'tomtom/tcomment_vim'
 
 call vundle#end()
-
 filetype plugin indent on
 syntax on
 
@@ -88,14 +87,6 @@ map <C-n> :NERDTreeToggle<CR>
 nmap <Leader>w <C-w>w
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-" NERD COMMENTER "
-let g:NERDSpaceDelims = 0
-let g:NERDCompactSexyComs = 0
-let g:NERDDefaultAlign = 'left'
-let g:NERDCommentEmptyLines = 1
-let g:NERDTrimTrailingWhitespace = 0
-let g:NERDToggleCheckAllLines = 1
 
 " ALE "
 let g:ale_enabled = 1
