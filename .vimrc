@@ -78,14 +78,14 @@ let g:lightline = {'colorscheme': 'jellybeans'}
 " NERDTREE "
 let NERDTreeShowLineNumbers = 0
 let NERDTreeShowHidden = 0
-let NERDTreeIgnore = ['egg-info', '__pycache__$', '\.pyc$']
+let NERDTreeIgnore = ['egg-info', '__pycache__$', '\.pyc$', 'node_modules']
 let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '-'
 
 map <C-n> :NERDTreeToggle<CR>
 nmap <Leader>w <C-w>w
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " ALE "
 let g:ale_enabled = 1
