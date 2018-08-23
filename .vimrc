@@ -70,7 +70,7 @@ vnoremap P "_dP
 
 " ACK "
 cnoreabbrev Ack Ack!
-nnoremap <Leader>a :Ack!<Space>
+" nnoremap <Leader>a :Ack!<Space>
 
 " LIGHTLINE "
 let g:lightline = {'colorscheme': 'jellybeans'}
@@ -84,8 +84,8 @@ let g:NERDTreeDirArrowCollapsible = '-'
 
 map <C-n> :NERDTreeToggle<CR>
 nmap <Leader>w <C-w>w
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " ALE "
 let g:ale_enabled = 1
@@ -100,12 +100,12 @@ let g:ale_warn_about_trailing_whitespace = 0
 let g:ale_warn_about_trailing_blank_lines = 0
 
 " TABULAR "
-if exists(":Tabularize")
-	nmap <Leader>a= :Tabularize /=<CR>
-	vmap <Leader>a= :Tabularize /=<CR>
-	nmap <Leader>a: :Tabularize /:/l0r1<CR>
-	vmap <Leader>a: :Tabularize /:/l0r1<CR>
-endif
+"if exists(":Tabularize")
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:/l0r1<CR>
+vmap <Leader>a: :Tabularize /:/l0r1<CR>
+"endif
 
 " BETTER WHITESPACE "
 let g:better_whitespace_enabled=1
