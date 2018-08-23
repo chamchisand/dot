@@ -78,7 +78,7 @@ let g:lightline = {'colorscheme': 'jellybeans'}
 " NERDTREE "
 let NERDTreeShowLineNumbers = 0
 let NERDTreeShowHidden = 0
-let NERDTreeIgnore = ['egg-info', '__pycache__$', '\.pyc$']
+let NERDTreeIgnore = ['egg-info', '__pycache__$', '\.pyc$', 'node_modules']
 let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '-'
 
