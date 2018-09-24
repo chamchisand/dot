@@ -1,54 +1,56 @@
 #default word color
 #regexp=[\w.,\:\-_/]+
 regexp=.+
-colours=green
--
-
-#table borders
-regexp=[+\-]+[+\-]|[|]
-colours=red
--
-
-#data in ( ) and ' '
-regexp=\([\w\d,']+\)
 colours=white
 -
 
 #numeric
-regexp=\s[\d\.]+\s*($|(?=\|))
-colours=yellow
+# regexp=(?=\|)\s*(\d+)\s*($|(?=\|))
+regexp=\|\s(\d+)\s*($|(?=\|))
+colours=magenta
 -
+
+#table borders
+regexp=[+\-=]+[+\-=]|[|]
+colours=blue
+-
+
+#data in ( ) and ' '
+# regexp=\([\w\d,']+\)
+# colours=white
+# -
 
 #date
 regexp=\d{4}-\d{2}-\d{2}
-colours=cyan
+colours=green
 -
+
 #time
-regexp=\d{2}:\d{2}:\d{2}
-colours=cyan
+regexp=\d{1,2}:\d{1,2}:\d{1,2}
+colours=green
 -
 
 #IP
 regexp=(\d{1,3}\.){3}\d{1,3}(:\d{1,5})?
-colours=cyan
+colours=blue
 -
 
 #schema
 regexp=`\w+`
-colours=white
+colours=red
 -
 
 #email
-regexp=[\w\.\-_]+@[\w\.\-_]+
-colours=magenta
--
+# regexp=[\w\.\-_]+@[\w\.\-_]+
+# colours=magenta
+# -
 
 #row delimeter when using \G key
 regexp=[*]+.+[*]+
 count=stop
-colours=white
+colours=blue
 -
 
 #column names when using \G key
-regexp=^\s*\w+:
-colours=white
+regexp=^\w+\s*(?=\|)
+colours=blue
