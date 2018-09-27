@@ -12,7 +12,7 @@ set $cwd ~/.config/i3
 
 set_from_resource $bg background #ff0000
 set_from_resource $fg foreground #eff1f5
-set_from_resource $border background #65737e
+set_from_resource $border color8 #65737e
 set_from_resource $gray color8 #65737e
 set_from_resource $red color1 #bf616a
 set_from_resource $green color2 #a3be8c
