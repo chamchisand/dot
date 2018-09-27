@@ -10,7 +10,7 @@
 [colors]
 background = ${xrdb:background:#000000}
 foreground = ${xrdb:color4:#ffffff}
-warn       = ${xrdb:color1:#ffffff}
+warn       = ${xrdb:color1:#ff0000}
 
 black = ${xrdb:color0:#000000}
 gray = ${xrdb:color8:#cccccc}
@@ -32,17 +32,17 @@ screenchange-reload = true
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 format-underline = ${colors.background}
-format-padding = 1
+;format-overline = ${colors.green}
 format-prefix-foreground = ${colors.gray}
-format-overline = ${colors.green}
+;format-padding = 0
 ;format-spacing = 0
-;format-margin =
-;format-offset =
+;format-margin = 0
+;format-offset = 0
 
 [bar/mybar]
 monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 24
+height = 20
 ;offset-x = 0
 ;offset-y = 0
 radius = 0
@@ -51,8 +51,8 @@ fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-;line-size = 0
-;line-color = ${colors.warn}
+line-size = 2
+line-color = ${colors.background}
 
 border-top-size = 0
 border-bottom-size = 0
@@ -60,16 +60,16 @@ border-left-size = 0
 border-right-size = 0
 border-color = ${colors.background}
 
-padding-left = 0
-padding-right = 0
+padding-left = 1
+padding-right = 1
 
-module-margin-left = 1
+module-margin-left = 2
 module-margin-right = 0
 
 font-0 = xos4 Terminus:pixelsize=12;2
 font-1 = NanumSquare:antialias=false:pixelsize=8;2
 
-modules-left = xwindow transmission
+modules-left = transmission
 modules-center = i3
 modules-right = mpd volume cpu memory filesystem date xkeyboard
 ;modules-right = filesystem xbacklight xkeyboard memory cpu battery temperature date powermenu
@@ -134,7 +134,7 @@ scroll-down = ~/bin/volume -m 5 && polybar-msg -p %pid% hook volume 1
 ;
 ;master-soundcard = default
 ;master-mixer = PCM
-;;speaker-mixer = PCM
+;speaker-mixer = PCM
 ;
 ;format-volume = <label-volume> <bar-volume>
 ;;label-volume = VOL
@@ -200,36 +200,41 @@ wrapping-scroll = false
 
 format-background = ${colors.background}
 
-label-mode-padding = 2
-label-mode-foreground = ${colors.black}
-label-mode-background = ${colors.foreground}
-;label-mode-underline = ${colors.foreground}
+label-mode-padding = 1
+label-mode-margin = 0
+label-mode-foreground = ${colors.warn}
+label-mode-background = ${colors.background}
+label-mode-underline = ${colors.background}
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%
 label-focused-padding = 2
-;label-focused-underline = ${colors.foreground}
-label-focused-foreground = ${colors.background}
-label-focused-background = ${colors.foreground}
+label-focused-margin = 0
+label-focused-underline = ${colors.warn}
+label-focused-foreground = ${colors.foreground}
+label-focused-background = ${colors.background}
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
 label-unfocused-padding = 2
-;label-unfocused-underline = ${colors.gray}
+label-unfocused-margin = 0
+label-unfocused-underline = ${colors.gray}
 label-unfocused-foreground = ${colors.foreground}
 label-unfocused-background = ${colors.background}
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
 label-visible-padding = 2
-;label-visible-underline = ${colors.gray}
+label-visible-margin = 0
+label-visible-underline = ${colors.gray}
 label-visible-foreground = ${colors.foreground}
 label-visible-background = ${colors.background}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %index%
 label-urgent-padding = 2
-;label-urgent-underline = ${colors.warn}
+label-urgent-margin = 0
+label-urgent-underline = ${colors.warn}
 label-urgent-foreground = ${colors.warn}
 label-urgent-background = ${colors.background}
 
