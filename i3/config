@@ -12,8 +12,8 @@ set $cwd ~/.config/i3
 
 set_from_resource $bg background #ff0000
 set_from_resource $fg foreground #eff1f5
-set_from_resource $border color19 #65737e
-set_from_resource $gray color18 #65737e
+set_from_resource $border background #65737e
+set_from_resource $gray color8 #65737e
 set_from_resource $red color1 #bf616a
 set_from_resource $green color2 #a3be8c
 set_from_resource $blue color4 #8fa1b3
@@ -209,21 +209,21 @@ focus_follows_mouse no
 new_window pixel 4
 new_float pixel 4
 
-# class                 border backgr text  indi   child_border
-client.focused          $gray  $gray  $fg   $red   $gray
-client.focused_inactive $bg    $bg    $fg   $bg    $bg
-client.unfocused        $bg    $bg    $fg   $bg    $bg
-client.urgent           $red   $red   $fg   $bg    $red
+# class                 border backgr text indi child_border
+client.focused          $blue  $blue  $fg  $red $border
+client.focused_inactive $bg    $bg    $fg  $bg  $bg
+client.unfocused        $bg    $bg    $fg  $bg  $bg
+client.urgent           $red   $red   $fg  $bg  $red
 
 # i3-gaps
 gaps outer 0
-gaps inner 10
-#smart_borders on
-#smart_gaps on
+gaps inner 0
+smart_borders on
+smart_gaps on
 
 exec --no-startup-id xsetroot -solid '$bg'
 exec --no-startup-id ibus-daemon -dr
 #exec --no-startup-id compton --config $cwd/compton.conf
-exec_always --no-startup-id ~/bin/bg.sh ~/Pictures/NuOnZQX.png
+#exec_always --no-startup-id ~/bin/wallpaper.sh ~/Pictures/N6QaTR8.png -r 60%
 exec_always --no-startup-id $HOME/bin/polybar-launch
 #exec --no-startup-id redshift
