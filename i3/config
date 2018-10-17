@@ -177,36 +177,37 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 focus_follows_mouse no
 
-#bar {
-#  #status_command i3status -c $cwd/status.conf
-#  font pango:xos4 Terminus 8
-#  status_command $cwd/i3blocks/i3blocks -c $cwd/i3blocks/i3blocks.conf
-#  i3bar_command i3bar -t
-#  tray_padding 0
-#  position bottom
-#  height 30
+# bar {
+#   status_command i3status -c $cwd/status.conf
+#   # status_command $cwd/i3blocks/i3blocks -c $cwd/i3blocks/i3blocks.conf
+#   font pango:xos4 Terminus 8
+#   i3bar_command i3bar
+#   # tray_output none
+#   tray_padding 0
+#   position bottom
+#   height 20
 #
-#  workspace_buttons yes
-#  bindsym button1 nop
-#  bindsym button4 nop
-#  bindsym button5 nop
+#   workspace_buttons yes
+#   bindsym button1 nop
+#   bindsym button4 nop
+#   bindsym button5 nop
 #
-#  strip_workspace_numbers yes
-#  #binding_mode_indicator yes
-#  #mode invisible
-#  #hidden_state hide
+#   strip_workspace_numbers yes
+#   # binding_mode_indicator yes
+#   # mode invisible
+#   # hidden_state hide
 #
-#  colors {
-#    statusline $fg
-#    background $bg
-#    separator  $bg
+#   colors {
+#     statusline $blue
+#     background $bg
+#     separator  $bg
 #
-#    focused_workspace  $yellow $yellow $bg
-#    active_workspace   $blue $blue $bg
-#    inactive_workspace $blue $blue $bg
-#    urgent_workspace   $red $red $bg
-#  }
-#}
+#     focused_workspace  $blue $blue $bg
+#     active_workspace   $bg $bg $blue
+#     inactive_workspace $bg $bg $blue
+#     urgent_workspace   $red $red $bg
+#   }
+# }
 
 new_window pixel 10
 new_float pixel 4
