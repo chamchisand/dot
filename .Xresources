@@ -42,9 +42,15 @@ URxvt*boldItalicFont: xft:xos4 Terminus:size=8:antialias=false,xft:NanumSquare:a
 !URxvt.keysym.M-s:           perl:keyboard-select:search
 
 rofi.font: xos4 Terminus 8
+rofi.width: 30
+rofi.padding: 0
+rofi.lines: 10
+rofi.line-padding: 10
+rofi.line-margin: 0
 rofi.color-enabled: true
 rofi.color-window: nord0, nord0, nord9
 rofi.color-normal: nord0, nord9, nord0, nord9, nord0
 !rofi.color-active: base00, #268bd2, base00, #268bd2, #205171
 !rofi.color-urgent: base00, #f3843d, base00, #268bd2, #ffc39c
-rofi.separator-style: solid
+rofi.separator-style: none
+rofi.hide-scrollbar: true
