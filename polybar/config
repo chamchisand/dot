@@ -9,8 +9,10 @@
 
 [colors]
 background = ${xrdb:background:#000000}
+;background = #000000FF
 foreground = ${xrdb:color4:#ffffff}
 warn = ${xrdb:color1:#ff0000}
+transparent = #000000FF
 
 black = ${xrdb:color0:#000000}
 gray = ${xrdb:color8:#cccccc}
@@ -32,18 +34,18 @@ screenchange-reload = true
 
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
-format-underline = ${colors.background}
-;format-overline = ${colors.green}
-format-prefix-foreground = ${colors.gray}
-;format-padding = 0
-;format-spacing = 0
-;format-margin = 0
-;format-offset = 0
+;format-underline = ${colors.cyan}
+;format-overline = ${colors.background}
+;format-prefix-foreground = ${colors.gray}
+format-padding = 0
+format-spacing = 0
+format-margin = 0
+format-offset = 10
 
 [bar/mybar]
 monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 20
+height = 16
 ;offset-x = 0
 ;offset-y = 0
 radius = 0
@@ -52,11 +54,11 @@ fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 0
+line-size = 2
 line-color = ${colors.red}
 
 border-top-size = 0
-border-bottom-size = 0
+border-bottom-size = 2
 border-left-size = 10
 border-right-size = 10
 border-color = ${colors.background}
@@ -64,7 +66,7 @@ border-color = ${colors.background}
 padding-left = 0
 padding-right = 0
 
-module-margin-left = 2
+module-margin-left = 1
 module-margin-right = 0
 
 font-0 = xos4 Terminus:size=8;2
@@ -81,6 +83,7 @@ tray-padding = 0
 ;tray-background = ${colors.background}
 
 top = true
+;bottom = true
 
 ;wm-restack = bspwm
 ;wm-restack = i3
@@ -201,43 +204,43 @@ wrapping-scroll = false
 
 format-background = ${colors.background}
 
-label-mode-padding = 2
+label-mode-padding = 0
 label-mode-margin = 0
-label-mode-foreground = ${colors.background}
-label-mode-background = ${colors.cyan}
-label-mode-underline = ${colors.cyan}
+label-mode-underline = ${colors.foreground}
+label-mode-foreground = ${colors.foreground}
+label-mode-background = ${colors.background}
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%
-label-focused-padding = 2
-label-focused-margin = 0
-label-focused-underline = ${colors.cyan}
+label-focused-padding = 0
+label-focused-margin = 1
+label-focused-underline = ${colors.foreground}
 label-focused-foreground = ${colors.foreground}
-label-focused-background = ${colors.gray}
+label-focused-background = ${colors.background}
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
-label-unfocused-padding = 2
-label-unfocused-margin = 0
+label-unfocused-padding = 0
+label-unfocused-margin = 1
 label-unfocused-underline = ${colors.background}
 label-unfocused-foreground = ${colors.foreground}
-label-unfocused-background = ${colors.black}
+label-unfocused-background = ${colors.background}
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
-label-visible-padding = 2
-label-visible-margin = 0
+label-visible-padding = 0
+label-visible-margin = 1
 label-visible-underline = ${colors.background}
 label-visible-foreground = ${colors.foreground}
-label-visible-background = ${colors.black}
+label-visible-background = ${colors.background}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %index%
-label-urgent-padding = 2
-label-urgent-margin = 0
-label-urgent-underline = ${colors.background}
+label-urgent-padding = 0
+label-urgent-margin = 1
+label-urgent-underline = ${colors.warn}
 label-urgent-foreground = ${colors.warn}
-label-urgent-background = ${colors.black}
+label-urgent-background = ${colors.background}
 
 [module/mpd]
 type = internal/mpd
@@ -293,7 +296,7 @@ interval = 10
 
 format = <label>
 format-prefix = "[cpu] "
-label = %percentage-cores%
+label = %percentage%%
 
 ;bar-load-width = 10
 ;bar-load-empty = |
