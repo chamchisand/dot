@@ -8,20 +8,19 @@
 ;=====================================================
 
 [colors]
-background = ${xrdb:background:#000000}
-foreground = ${xrdb:color7:#ffffff}
+;background = ${xrdb:background:#000000}
+;foreground = ${xrdb:color7:#ffffff}
 black = ${xrdb:color0:#000000}
-gray = ${xrdb:color9:#cccccc}
+gray = ${xrdb:color8:#cccccc}
 white = ${xrdb:color7:#ffffff}
 red = ${xrdb:color5:#ff0000}
 green = ${xrdb:color2:#00ff00}
 blue = ${xrdb:color4:#00ff00}
 cyan = ${xrdb:color6:#00ffff}
 
-;background = ${xrdb:background}
-;foreground = ${xrdb:foreground}
+background = #44475a
+foreground = #44475a
 ;foreground = #6272a4
-;foreground = #AAAAAA
 ;black = ${xrdb:background}
 ;white = #DDDDDD
 ;gray = #44475a
@@ -41,7 +40,7 @@ screenchange-reload = true
 ;compositing-border = over
 
 format-foreground = ${colors.foreground}
-format-background = ${colors.background}
+format-background = ${colors.blue}
 ;format-underline = ${colors.cyan}
 ;format-overline = ${colors.background}
 ;format-prefix-foreground = ${colors.green}
@@ -53,10 +52,10 @@ format-offset = 0
 [bar/mybar]
 monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 20
+height = 16
 ;offset-x = 0
 ;offset-y = 0
-radius = 0
+;radius = 0
 fixed-center = true
 
 background = ${colors.background}
@@ -65,16 +64,16 @@ foreground = ${colors.foreground}
 line-size = 1
 line-color = ${colors.red}
 
-border-top-size = 0
-border-bottom-size = 0
-border-left-size = 0
-border-right-size = 0
-border-color = ${colors.red}
+border-top-size = 5
+border-bottom-size = 5
+border-left-size = 5
+border-right-size = 5
+border-color = ${colors.background}
 
 padding-left = 0
 padding-right = 0
 
-module-margin-left = 0
+module-margin-left = 1
 module-margin-right = 0
 
 font-0 = xos4 Terminus:size=8;2
@@ -124,7 +123,7 @@ exec = ~/bin/tr-bar
 
 format = <label>
 format-background = ${colors.cyan}
-format-foreground = ${colors.black}
+format-foreground = ${colors.foreground}
 format-prefix =
 label = %output%
 interval = 60
@@ -134,7 +133,7 @@ type = custom/ipc
 
 format = <output>
 format-background = ${colors.cyan}
-format-foreground = ${colors.black}
+format-foreground = ${colors.foreground}
 format-prefix = "vol "
 output = %output%
 
@@ -217,38 +216,41 @@ wrapping-scroll = false
 ;pin-workspaces = true
 
 format-padding = 0
-format-background = ${colors.background}
 
 label-mode-padding = 1
-label-mode-foreground = ${colors.background}
+;label-mode-foreground = ${colors.foreground}
 label-mode-background = ${colors.red}
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%
 label-focused-padding = 2
-label-focused-foreground = ${colors.background}
-label-focused-background = ${colors.blue}
+label-focused-margin-right = 1
+;label-focused-foreground = ${colors.foreground}
+label-focused-background = ${colors.green}
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
 label-unfocused-padding = 2
-label-unfocused-foreground = ${colors.background}
+label-unfocused-margin-right = 1
+;label-unfocused-foreground = ${colors.foreground}
 label-unfocused-background = ${colors.cyan}
 
 ; visible = Active workspace on unfocused monitor
 ;label-visible = %index%
-;label-visible-padding = 1
-;label-visible-foreground = ${colors.background}
+;label-visible-padding = 2
+label-visible-margin-right = 1
+;label-visible-foreground = ${colors.foreground}
 ;label-visible-background = ${colors.cyan}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %index%
-label-urgent-padding = 1
-label-urgent-foreground = ${colors.background}
+label-urgent-padding = 2
+label-urgent-margin-right = 1
+;label-urgent-foreground = ${colors.foreground}
 label-urgent-background = ${colors.red}
 
 ;label-separator = |
-;label-separator-padding = 2
+;label-separator-padding = 1
 ;label-separator-foreground = #ffb52a
 
 [module/mpd]
@@ -258,7 +260,7 @@ type = internal/mpd
 ;format-offline = <label-offline>
 format-playing = <label-song> <icon-prev> <icon-stop> <icon-pause> <icon-next>
 format-playing-background = ${colors.green}
-format-playing-foreground = ${colors.black}
+format-playing-foreground = ${colors.foreground}
 format-stopped = mpd <icon-play>
 ;format-stopped-background = ${colors.gray}
 ;format-stopped-foreground = ${colors.foreground}
