@@ -8,28 +8,29 @@
 ;=====================================================
 
 [colors]
-;background = ${xrdb:background:#000000}
-;foreground = ${xrdb:color7:#ffffff}
-;black = ${xrdb:color0:#000000}
-;gray = ${xrdb:color9:#cccccc}
-;white = ${xrdb:color7:#ffffff}
-;red = ${xrdb:color1:#ff0000}
-;green = ${xrdb:color2:#00ff00}
-;cyan = ${xrdb:color6:#00ffff}
+background = ${xrdb:background:#000000}
+foreground = ${xrdb:color7:#ffffff}
+black = ${xrdb:color0:#000000}
+gray = ${xrdb:color9:#cccccc}
+white = ${xrdb:color7:#ffffff}
+red = ${xrdb:color5:#ff0000}
+green = ${xrdb:color2:#00ff00}
+blue = ${xrdb:color4:#00ff00}
+cyan = ${xrdb:color6:#00ffff}
 
-background = ${xrdb:background}
+;background = ${xrdb:background}
 ;foreground = ${xrdb:foreground}
 ;foreground = #6272a4
-foreground = #AAAAAA
-black = ${xrdb:background}
-white = #DDDDDD
-gray = #44475a
-green = #4BBC73
-red = #FF79C6
-blue = #6272a4
-cyan = #51B3F5
-yellow = #E6DB74
-magenta = #bd93f9
+;foreground = #AAAAAA
+;black = ${xrdb:background}
+;white = #DDDDDD
+;gray = #44475a
+;green = #4BBC73
+;red = #FF79C6
+;blue = #6272a4
+;cyan = #51B3F5
+;yellow = #E6DB74
+;magenta = #bd93f9
 
 [settings]
 screenchange-reload = true
@@ -87,7 +88,7 @@ modules-right = mpd volume cpu memory filesystem date xkeyboard
 tray-position = right
 tray-padding = 2
 ;tray-transparent = true
-tray-background = ${colors.green}
+tray-background = ${colors.background}
 
 top = true
 ;bottom = true
@@ -226,19 +227,19 @@ label-mode-background = ${colors.red}
 label-focused = %index%
 label-focused-padding = 2
 label-focused-foreground = ${colors.background}
-label-focused-background = ${colors.cyan}
+label-focused-background = ${colors.blue}
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
 label-unfocused-padding = 2
-label-unfocused-foreground = ${colors.foreground}
-label-unfocused-background = ${colors.background}
+label-unfocused-foreground = ${colors.background}
+label-unfocused-background = ${colors.cyan}
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%
-label-visible-padding = 1
-label-visible-foreground = ${colors.foreground}
-label-visible-background = ${colors.background}
+;label-visible = %index%
+;label-visible-padding = 1
+;label-visible-foreground = ${colors.background}
+;label-visible-background = ${colors.cyan}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %index%
