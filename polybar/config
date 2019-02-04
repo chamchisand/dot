@@ -8,21 +8,28 @@
 ;=====================================================
 
 [colors]
-background = ${xrdb:background:#000000}
-;background = #000000FF
-foreground = ${xrdb:color4:#ffffff}
-warn = ${xrdb:color1:#ff0000}
-transparent = #000000FF
+;background = ${xrdb:background:#000000}
+;foreground = ${xrdb:color7:#ffffff}
+;black = ${xrdb:color0:#000000}
+;gray = ${xrdb:color9:#cccccc}
+;white = ${xrdb:color7:#ffffff}
+;red = ${xrdb:color1:#ff0000}
+;green = ${xrdb:color2:#00ff00}
+;cyan = ${xrdb:color6:#00ffff}
 
-black = ${xrdb:color0:#000000}
-gray = ${xrdb:color8:#cccccc}
-white = ${xrdb:color7:#ffffff}
-red = ${xrdb:color1:#ff0000}
-green = ${xrdb:color2:#00ff00}
-blue = ${xrdb:color4:#0000ff}
-cyan = ${xrdb:color6:#00ffff}
-yellow = ${xrdb:color3:#ffff00}
-magenta = ${xrdb:color5:#ffff00}
+background = ${xrdb:background}
+;foreground = ${xrdb:foreground}
+;foreground = #6272a4
+foreground = #AAAAAA
+black = ${xrdb:background}
+white = #DDDDDD
+gray = #44475a
+green = #4BBC73
+red = #FF79C6
+blue = #6272a4
+cyan = #51B3F5
+yellow = #E6DB74
+magenta = #bd93f9
 
 [settings]
 screenchange-reload = true
@@ -36,16 +43,16 @@ format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 ;format-underline = ${colors.cyan}
 ;format-overline = ${colors.background}
-;format-prefix-foreground = ${colors.gray}
-format-padding = 0
+;format-prefix-foreground = ${colors.green}
+format-padding = 1
 format-spacing = 0
 format-margin = 0
-format-offset = 10
+format-offset = 0
 
 [bar/mybar]
 monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 16
+height = 20
 ;offset-x = 0
 ;offset-y = 0
 radius = 0
@@ -54,19 +61,19 @@ fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 2
+line-size = 1
 line-color = ${colors.red}
 
 border-top-size = 0
-border-bottom-size = 2
-border-left-size = 10
-border-right-size = 10
-border-color = ${colors.background}
+border-bottom-size = 0
+border-left-size = 0
+border-right-size = 0
+border-color = ${colors.red}
 
 padding-left = 0
 padding-right = 0
 
-module-margin-left = 1
+module-margin-left = 0
 module-margin-right = 0
 
 font-0 = xos4 Terminus:size=8;2
@@ -78,9 +85,9 @@ modules-right = mpd volume cpu memory filesystem date xkeyboard
 ;modules-right = filesystem xbacklight xkeyboard memory cpu battery temperature date powermenu
 
 tray-position = right
-tray-padding = 0
+tray-padding = 2
 ;tray-transparent = true
-;tray-background = ${colors.background}
+tray-background = ${colors.green}
 
 top = true
 ;bottom = true
@@ -115,6 +122,8 @@ type = custom/script
 exec = ~/bin/tr-bar
 
 format = <label>
+format-background = ${colors.cyan}
+format-foreground = ${colors.black}
 format-prefix =
 label = %output%
 interval = 60
@@ -123,7 +132,9 @@ interval = 60
 type = custom/ipc
 
 format = <output>
-format-prefix = "[vol] "
+format-background = ${colors.cyan}
+format-foreground = ${colors.black}
+format-prefix = "vol "
 output = %output%
 
 hook-0 = echo $(~/bin/volume)
@@ -157,21 +168,23 @@ type = internal/xkeyboard
 blacklist-0 = num lock
 label-layout = %layout%
 
-;label-indicator-padding = 1
-;label-indicator-margin-left = 1
+;label-indicator-padding = 10
+;label-indicator-margin-left = 100
+;label-indicator-margin-right = 100
 ;label-indicator-foreground = ${colors.background}
 ;label-indicator-background = ${colors.blue}
-;label-indicator-underline = ${colors.warn}
+;label-indicator-underline = ${colors.red}
 
 [module/filesystem]
 type = internal/fs
 interval = 60
-spacing = 1
+spacing = 0
 
 mount-0 = /
 mount-1 = /home
 
-label-mounted = [%mountpoint%] %percentage_used%%
+label-mounted = %mountpoint% %percentage_used%%
+;label-mounted-background = ${colors.background}
 label-unmounted =
 
 ;[module/bspwm]
@@ -186,7 +199,7 @@ label-unmounted =
 ;label-occupied-padding = 1
 ;
 ;label-urgent = %index%!
-;label-urgent-background = ${colors.warn}
+;label-urgent-background = ${colors.red}
 ;label-urgent-padding = 1
 ;
 ;label-empty = %index%
@@ -202,45 +215,40 @@ wrapping-scroll = false
 ; Only show workspaces on the same output as the bar
 ;pin-workspaces = true
 
+format-padding = 0
 format-background = ${colors.background}
 
-label-mode-padding = 0
-label-mode-margin = 0
-label-mode-underline = ${colors.foreground}
-label-mode-foreground = ${colors.foreground}
-label-mode-background = ${colors.background}
+label-mode-padding = 1
+label-mode-foreground = ${colors.background}
+label-mode-background = ${colors.red}
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%
-label-focused-padding = 0
-label-focused-margin = 1
-label-focused-underline = ${colors.foreground}
-label-focused-foreground = ${colors.foreground}
-label-focused-background = ${colors.background}
+label-focused-padding = 2
+label-focused-foreground = ${colors.background}
+label-focused-background = ${colors.cyan}
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
-label-unfocused-padding = 0
-label-unfocused-margin = 1
-label-unfocused-underline = ${colors.background}
+label-unfocused-padding = 2
 label-unfocused-foreground = ${colors.foreground}
 label-unfocused-background = ${colors.background}
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
-label-visible-padding = 0
-label-visible-margin = 1
-label-visible-underline = ${colors.background}
+label-visible-padding = 1
 label-visible-foreground = ${colors.foreground}
 label-visible-background = ${colors.background}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %index%
-label-urgent-padding = 0
-label-urgent-margin = 1
-label-urgent-underline = ${colors.warn}
-label-urgent-foreground = ${colors.warn}
-label-urgent-background = ${colors.background}
+label-urgent-padding = 1
+label-urgent-foreground = ${colors.background}
+label-urgent-background = ${colors.red}
+
+;label-separator = |
+;label-separator-padding = 2
+;label-separator-foreground = #ffb52a
 
 [module/mpd]
 type = internal/mpd
@@ -248,8 +256,14 @@ type = internal/mpd
 ;format-online = <toggle> <icon-stop>
 ;format-offline = <label-offline>
 format-playing = <label-song> <icon-prev> <icon-stop> <icon-pause> <icon-next>
-format-stopped = [mpd] <icon-play>
-format-paused = <label-song> <icon-play> <icon-stop>
+format-playing-background = ${colors.green}
+format-playing-foreground = ${colors.black}
+format-stopped = mpd <icon-play>
+;format-stopped-background = ${colors.gray}
+;format-stopped-foreground = ${colors.foreground}
+format-paused = <label-song> <icon-play>
+;format-paused-background = ${colors.gray}
+format-paused-foreground = ${colors.foreground}
 
 icon-prev = <
 icon-stop = []
@@ -267,6 +281,8 @@ label-song = %artist% - %title%
 label-song-maxlen = 10
 label-song-ellipsis = true
 label-offline =
+;label-song-foreground = ${colors.cyan}
+;label-song-background = ${colors.green}
 
 ;[module/xbacklight]
 ;type = internal/xbacklight
@@ -295,7 +311,7 @@ type = internal/cpu
 interval = 10
 
 format = <label>
-format-prefix = "[cpu] "
+format-prefix = "cpu "
 label = %percentage%%
 
 ;bar-load-width = 10
@@ -316,16 +332,16 @@ label = %percentage%%
 ;ramp-coreload-6 = ▇
 ;ramp-coreload-7 = █
 
-;ramp-coreload-4-foreground = ${colors.warn}
-;ramp-coreload-5-foreground = ${colors.warn}
-;ramp-coreload-6-foreground = ${colors.warn}
-;ramp-coreload-7-foreground = ${colors.warn}
+;ramp-coreload-4-foreground = ${colors.red}
+;ramp-coreload-5-foreground = ${colors.red}
+;ramp-coreload-6-foreground = ${colors.red}
+;ramp-coreload-7-foreground = ${colors.red}
 
 [module/memory]
 type = internal/memory
 interval = 10
 format = <label>
-format-prefix = "[mem] "
+format-prefix = "mem "
 label = %percentage_used%%
 
 ;bar-used-width = 10
@@ -432,9 +448,9 @@ type = custom/menu
 format-spacing = 1
 
 label-open = #
-label-open-foreground = ${colors.warn}
+label-open-foreground = ${colors.red}
 label-close = #
-label-close-foreground = ${colors.warn}
+label-close-foreground = ${colors.red}
 label-separator = |
 label-separator-foreground = ${colors.foreground}
 
