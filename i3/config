@@ -10,7 +10,8 @@
 
 set $cwd ~/.config/i3
 
-set_from_resource $bg background #ff0000
+# set_from_resource $bg background #ff0000
+set $bg #44475a
 set_from_resource $fg foreground #eff1f5
 set_from_resource $border color0 #65737e
 set_from_resource $indi color8 #ebcb8b
@@ -209,8 +210,8 @@ focus_follows_mouse no
 #  }
 #}
 
-new_window pixel 4
-new_float pixel 4
+new_window pixel 5
+new_float pixel 5
 
 # class                 border  backgr  text indi  child_border
 client.focused          $border $border $fg  $indi $border
@@ -219,10 +220,10 @@ client.unfocused        $bg     $bg     $fg  $bg   $bg
 client.urgent           $red    $red    $fg  $bg   $red
 
 # i3-gaps
-gaps outer 0
+gaps outer 5
 gaps inner 0
-smart_borders on
-smart_gaps on
+#smart_borders on
+#smart_gaps on
 
 exec_always --no-startup-id xsetroot -solid '$bg'
 exec --no-startup-id ibus-daemon -dr
