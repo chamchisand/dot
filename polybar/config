@@ -66,8 +66,8 @@ line-color = ${colors.red}
 
 border-top-size = 5
 border-bottom-size = 0
-border-left-size = 10
-border-right-size = 10
+border-left-size = 5
+border-right-size = 5
 border-color = ${colors.background}
 
 padding-left = 0
@@ -79,15 +79,15 @@ module-margin-right = 0
 font-0 = xos4 Terminus:size=8;2
 font-1 = NanumSquare:antialias=false:size=8;2
 
-modules-left = transmission
-modules-center = i3
-modules-right = mpd volume cpu memory filesystem date xkeyboard
+;modules-left = transmission
+modules-center = i3 mpd volume cpu memory filesystem date xkeyboard transmission
+;modules-right = mpd volume cpu memory filesystem date xkeyboard
 ;modules-right = filesystem xbacklight xkeyboard memory cpu battery temperature date powermenu
 
 tray-position = right
-tray-padding = 2
-;tray-transparent = true
+tray-padding = 5
 tray-background = ${colors.background}
+;tray-transparent = true
 
 top = true
 ;bottom = true
@@ -216,6 +216,7 @@ wrapping-scroll = false
 ;pin-workspaces = true
 
 format-padding = 0
+format-background = ${colors.background}
 
 label-mode-padding = 1
 ;label-mode-foreground = ${colors.foreground}
@@ -224,28 +225,28 @@ label-mode-background = ${colors.red}
 ; focused = Active workspace on focused monitor
 label-focused = %index%
 label-focused-padding = 2
-label-focused-margin-right = 1
+label-focused-margin-left = 1
 ;label-focused-foreground = ${colors.foreground}
 label-focused-background = ${colors.green}
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
 label-unfocused-padding = 2
-label-unfocused-margin-right = 1
+label-unfocused-margin-left = 1
 ;label-unfocused-foreground = ${colors.foreground}
 label-unfocused-background = ${colors.cyan}
 
 ; visible = Active workspace on unfocused monitor
 ;label-visible = %index%
 ;label-visible-padding = 2
-label-visible-margin-right = 1
+;label-visible-margin-left = 1
 ;label-visible-foreground = ${colors.foreground}
 ;label-visible-background = ${colors.cyan}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %index%
 label-urgent-padding = 2
-label-urgent-margin-right = 1
+label-urgent-margin-left = 1
 ;label-urgent-foreground = ${colors.foreground}
 label-urgent-background = ${colors.red}
 
