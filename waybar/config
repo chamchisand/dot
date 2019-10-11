@@ -1,0 +1,64 @@
+{
+  "layer": "bottom",
+  "position": "bottom",
+  "margin": "0",
+  "modules-left": [],
+  "modules-center": ["sway/workspaces", "sway/mode", "custom/tr", "custom/volume", "cpu", "memory", "temperature", "clock"],
+  "modules-right": [],
+  "sway/workspaces": {
+    "disable-scroll": true
+  },
+  "sway/window": {
+    "tooltip": false
+  },
+  "clock": {
+    "format": "{:%a %d %b %Y %H:%M}",
+    "tooltip": false
+  },
+  "mpd": {
+    "format": "{artist} {title}",
+    "format-disconnected": "disconnected",
+    "format-stopped": "mpd",
+    "interval": 5,
+    "tooltip": false
+  },
+  "cpu": {
+    "format": "CPU:{usage}%",
+    "tooltip": false,
+    "interval": 30
+  },
+  "memory": {
+    "format": "Mem:{used:0.1f}G",
+    "tooltip": false,
+    "interval": 30
+  },
+  "temperature": {
+    "format": "{temperatureC}°C",
+    "thermal-zone": 3,
+    "interval": 30,
+    "tooltip": false,
+    "critical-threshold": 64
+  },
+  "custom/volume": {
+    "interval": "once",
+    "format": "Vol:{}",
+    "tooltip": false,
+    "exec": "~/bin/volume",
+    "on-click": "~/bin/volume -m 1",
+    "on-scroll-up": "~/bin/volume -m 4",
+    "on-scroll-down": "~/bin/volume -m 5"
+  },
+  "custom/tr": {
+    "format": "{}",
+    "interval": 60,
+    "tooltip": false,
+    "escape": true,
+    "exec": "~/bin/tr-bar"
+  },
+  "custom/ibus": {
+    "format": "{}",
+    "interval": 1,
+    "tooltip": false,
+    "exec": "~/bin/ibus.sh"
+  }
+}
