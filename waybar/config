@@ -3,16 +3,20 @@
   "position": "bottom",
   "margin": "0",
   "modules-left": [],
-  "modules-center": ["sway/workspaces", "sway/mode", "custom/tr", "custom/volume", "cpu", "memory", "temperature", "clock"],
+  "modules-center": ["sway/workspaces", "sway/mode", "custom/tr", "custom/volume", "temperature", "clock"],
   "modules-right": [],
   "sway/workspaces": {
+    "format": "[{value}]",
     "disable-scroll": true
   },
   "sway/window": {
     "tooltip": false
   },
+  "sway/mode": {
+    "format": "[{}]",
+  },
   "clock": {
-    "format": "{:%a %d %b %Y %H:%M}",
+    "format": "[{:%a %d %b %Y %H:%M}]",
     "tooltip": false
   },
   "mpd": {
@@ -33,15 +37,19 @@
     "interval": 30
   },
   "temperature": {
-    "format": "{temperatureC}°C",
+    "format": "[{temperatureC}°C]",
     "thermal-zone": 3,
     "interval": 30,
     "tooltip": false,
     "critical-threshold": 64
   },
+  "tray": {
+    "icon-size": 21,
+    "spacing": 10
+  },
   "custom/volume": {
     "interval": "once",
-    "format": "Vol:{}",
+    "format": "[{}]",
     "tooltip": false,
     "exec": "~/bin/volume",
     "on-click": "~/bin/volume -m 1",

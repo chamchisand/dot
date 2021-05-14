@@ -5,14 +5,9 @@
 set $bg #2E3440
 set $fg #C0C5CE
 set $border #2E3440
-set $clear #2E3440CC
-set $indi #3B4252
 set $gray #3B4252
-set $red #FB9FB1
-set $green #A3BE8C
-set $blue #81A1C1
-set $yellow #EBCB8B
-set $cyan #88C0D0
+set $warn #FB9FB1
+set $indi #568E81
 
 set $mod Mod1
 set $left h
@@ -24,19 +19,21 @@ set $right l
 ########
 # FONT #
 ########
-font pango:Terminus (TTF) 20px
+font pango:Terminus (TTF) 12px
 
 
 ##############
 # BACKGROUND #
 ##############
-output * bg $bg solid_color
+# output * bg $bg solid_color
+output * bg ~/Pictures/75242180_p0.jpg fit $bg
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec urxvt
+# bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -82,6 +79,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
+# bindsym $mod+Shift+space floating toggle; resize set 800px 800px
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
@@ -141,10 +139,10 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. 
 # Resizing containers:
 #
 mode "resize" {
-  bindsym $left resize shrink width 10px
+  bindsym $left resize shrink width 100px
   bindsym $down resize grow height 10px
   bindsym $up resize shrink height 10px
-  bindsym $right resize grow width 10px
+  bindsym $right resize grow width 100px
 
   bindsym Return mode "default"
   bindsym Escape mode "default"
@@ -163,10 +161,10 @@ default_border pixel 5
 default_floating_border none
 
 # class                 border backgr text indi  child_border
-client.focused          $bg    $gray  $fg  $red  $gray
-client.focused_inactive $bg    $bg    $fg  $indi $border
-client.unfocused        $bg    $bg    $fg  $indi $border
-client.urgent           $bg    $red   $fg  $indi $red
+client.focused          $bg    $gray  $fg  $indi $gray
+client.focused_inactive $bg    $bg    $fg  $bg   $border
+client.unfocused        $bg    $bg    $fg  $bg   $border
+client.urgent           $bg    $warn  $fg  $warn $warn
 
 # for_window [title="."] title_format "{%title} (%app_id) [%class]"
 for_window [title="."] title_format ""
@@ -176,14 +174,22 @@ for_window [title="."] title_format ""
 titlebar_border_thickness 0
 titlebar_padding 10 0
 
-# gaps outer 10px
-# gaps inner 10px
-# smart_borders on
+gaps outer 0
+gaps inner 0
+smart_borders on
 # smart_gaps on
 
 exec_always xrdb ~/.Xresources
-# exec_always --no-startup-id ibus-daemon -dr
-# exec ~/bin/gsettings \
+exec --no-startup-id ibus-daemon -dr
+exec mako --font "Terminus (TTF) 12px" --padding 10 --background-color "#FFB6C1" --text-color "#2E3440" --border-size 0 --width 200 --actions 0 --default-timeout 60000
+
+# exec_always {
+#   # gsettings set $gnome-schema gtk-theme 'Your theme'
+#   # gsettings set $gnome-schema icon-theme 'Your icon theme'
+#   gsettings set $gnome-schema cursor-theme 'Capitaine Cursors - White'
+# }
+
+# exec_always ~/bin/gsettings \
 #   gtk-theme:gtk-theme-name \
 #   icon-theme:gtk-icon-theme-name \
 #   cursor-theme:gtk-cursor-theme-name

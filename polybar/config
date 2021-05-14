@@ -8,28 +8,17 @@
 ;=====================================================
 
 [colors]
-;background = ${xrdb:background:#000000}
-;foreground = ${xrdb:color7:#ffffff}
-black = ${xrdb:color0:#000000}
-gray = ${xrdb:color8:#cccccc}
-white = ${xrdb:color7:#ffffff}
-red = ${xrdb:color5:#ff0000}
-green = ${xrdb:color2:#00ff00}
-blue = ${xrdb:color4:#00ff00}
-cyan = ${xrdb:color6:#00ffff}
+background = ${xrdb:background:#000000}
+foreground = ${xrdb:color12:#ffffff}
 
-background = #44475a
-foreground = #44475a
-;foreground = #6272a4
-;black = ${xrdb:background}
-;white = #DDDDDD
-;gray = #44475a
-;green = #4BBC73
-;red = #FF79C6
-;blue = #6272a4
-;cyan = #51B3F5
-;yellow = #E6DB74
-;magenta = #bd93f9
+black = ${xrdb:color0:#000000}
+white = ${xrdb:color15:#ffffff}
+red = ${xrdb:color9:#00ff00}
+green = ${xrdb:color10:#00ff00}
+yellow = ${xrdb:color3:#00ff00}
+blue = ${xrdb:color4:#00ff00}
+magenta = ${xrdb:color5:#00ffff}
+cyan = ${xrdb:color6:#00ffff}
 
 [settings]
 screenchange-reload = true
@@ -40,57 +29,55 @@ screenchange-reload = true
 ;compositing-border = over
 
 format-foreground = ${colors.foreground}
-format-background = ${colors.blue}
-;format-underline = ${colors.cyan}
-;format-overline = ${colors.background}
-;format-prefix-foreground = ${colors.green}
-format-padding = 1
+format-background = ${colors.background}
+format-underline = ${colors.cyan}
+format-overline = ${colors.magenta}
+;format-prefix-foreground = ${colors.foreground}
+format-padding = 0
 format-spacing = 0
-format-margin = 0
+format-margin = 1
 format-offset = 0
 
 [bar/mybar]
-monitor = ${env:MONITOR:HDMI-1}
+monitor =
 width = 100%
-height = 16
+height = 30
 ;offset-x = 0
 ;offset-y = 0
 ;radius = 0
 fixed-center = true
-
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 1
+line-size = 0
 line-color = ${colors.red}
 
-border-top-size = 5
-border-bottom-size = 0
-border-left-size = 5
-border-right-size = 5
+border-top-size = 4
+border-bottom-size = 4
+border-left-size = 0
+border-right-size = 0
 border-color = ${colors.background}
 
 padding-left = 0
 padding-right = 0
 
-module-margin-left = 1
+module-margin-left = 0
 module-margin-right = 0
 
-font-0 = xos4 Terminus:size=8;2
+font-0 = Terminus (TTF):size=12;2
 font-1 = NanumSquare:antialias=false:size=8;2
 
-;modules-left = transmission
-modules-center = i3 mpd volume cpu memory filesystem date xkeyboard transmission
-;modules-right = mpd volume cpu memory filesystem date xkeyboard
+;modules-left =
+modules-center = i3 transmission volume temperature date
 ;modules-right = filesystem xbacklight xkeyboard memory cpu battery temperature date powermenu
 
-tray-position = right
-tray-padding = 5
-tray-background = ${colors.background}
+;tray-position = right
+;tray-padding = 5
+;tray-background = ${colors.background}
 ;tray-transparent = true
 
-top = true
-;bottom = true
+;top = true
+bottom = true
 
 ;wm-restack = bspwm
 ;wm-restack = i3
@@ -122,20 +109,19 @@ type = custom/script
 exec = ~/bin/tr-bar
 
 format = <label>
-format-background = ${colors.cyan}
-format-foreground = ${colors.foreground}
+;format-background = ${colors.background}
+;format-foreground = ${colors.foreground}
 format-prefix =
-label = %output%
+label = [%output%]
 interval = 60
 
 [module/volume]
 type = custom/ipc
 
-format = <output>
-format-background = ${colors.cyan}
-format-foreground = ${colors.foreground}
-format-prefix = "vol "
-output = %output%
+format = [<output>]
+;format-background = ${colors.background}
+;format-foreground = ${colors.foreground}
+;format-prefix = "vol "
 
 hook-0 = echo $(~/bin/volume)
 initial = 1
@@ -211,44 +197,45 @@ type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
+enable-scroll = false
 
 ; Only show workspaces on the same output as the bar
 ;pin-workspaces = true
 
-format-padding = 0
-format-background = ${colors.background}
-
+label-mode = [%mode%]
+;format-padding = 0
+;format-background = ${colors.background}
 label-mode-padding = 1
 ;label-mode-foreground = ${colors.foreground}
-label-mode-background = ${colors.red}
+;label-mode-background = ${colors.background}
 
 ; focused = Active workspace on focused monitor
-label-focused = %index%
-label-focused-padding = 2
-label-focused-margin-left = 1
-;label-focused-foreground = ${colors.foreground}
-label-focused-background = ${colors.green}
+label-focused = [%index%]
+label-focused-padding = 1
+;label-focused-margin-left = 1
+label-focused-foreground = ${colors.red}
+;label-focused-background = ${colors.background}
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
-label-unfocused-padding = 2
-label-unfocused-margin-left = 1
+label-unfocused = [%index%]
+label-unfocused-padding = 1
+;label-unfocused-margin-left = 1
 ;label-unfocused-foreground = ${colors.foreground}
-label-unfocused-background = ${colors.cyan}
+;label-unfocused-background = ${colors.background}
 
 ; visible = Active workspace on unfocused monitor
-;label-visible = %index%
-;label-visible-padding = 2
+label-visible = [%index%]
+label-visible-padding = 1
 ;label-visible-margin-left = 1
 ;label-visible-foreground = ${colors.foreground}
-;label-visible-background = ${colors.cyan}
+;label-visible-background = ${colors.red}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index%
-label-urgent-padding = 2
-label-urgent-margin-left = 1
-;label-urgent-foreground = ${colors.foreground}
-label-urgent-background = ${colors.red}
+label-urgent = [%index%]
+label-urgent-padding = 1
+;label-urgent-margin-left = 1
+label-urgent-foreground = ${colors.red}
+;label-urgent-background = ${colors.background}
 
 ;label-separator = |
 ;label-separator-padding = 1
@@ -259,14 +246,14 @@ type = internal/mpd
 
 ;format-online = <toggle> <icon-stop>
 ;format-offline = <label-offline>
-format-playing = <label-song> <icon-prev> <icon-stop> <icon-pause> <icon-next>
-format-playing-background = ${colors.green}
+format-playing = <icon-pause> <label-song>
+format-playing-background = ${colors.background}
 format-playing-foreground = ${colors.foreground}
-format-stopped = mpd <icon-play>
-;format-stopped-background = ${colors.gray}
+format-stopped = <icon-play>
+format-stopped-background = ${colors.cyan}
 ;format-stopped-foreground = ${colors.foreground}
-format-paused = <label-song> <icon-play>
-;format-paused-background = ${colors.gray}
+format-paused = <icon-play> <label-song>
+format-paused-background = ${colors.cyan}
 format-paused-foreground = ${colors.foreground}
 
 icon-prev = <
@@ -279,14 +266,14 @@ icon-next = >
 ;bar-progress-indicator = |
 ;bar-progress-fill = |
 ;bar-progress-empty = |
-;bar-progress-empty-foreground = ${colors.gray}
+;bar-progress-empty-foreground = ${colors.foreground}
 
 label-song = %artist% - %title%
-label-song-maxlen = 10
-label-song-ellipsis = true
+;label-song-maxlen = 10
+;label-song-ellipsis = true
 label-offline =
 ;label-song-foreground = ${colors.cyan}
-;label-song-background = ${colors.green}
+;label-song-background = ${colors.background}
 
 ;[module/xbacklight]
 ;type = internal/xbacklight
@@ -316,14 +303,14 @@ interval = 10
 
 format = <label>
 format-prefix = "cpu "
-label = %percentage%%
+label = %percentage-cores%
 
 ;bar-load-width = 10
 ;bar-load-empty = |
 ;bar-load-fill = |
 ;bar-load-indicator = |
 
-;bar-load-empty-foreground = ${colors.gray}
+;bar-load-empty-foreground = ${colors.background}
 ;bar-load-fill-foreground = ${colors.foreground}
 ;bar-load-indicator-foreground = ${colors.foreground}
 
@@ -343,10 +330,10 @@ label = %percentage%%
 
 [module/memory]
 type = internal/memory
-interval = 10
+interval = 60
 format = <label>
 format-prefix = "mem "
-label = %percentage_used%%
+label = %gb_used%
 
 ;bar-used-width = 10
 ;bar-used-indicator = |
@@ -356,7 +343,7 @@ label = %percentage_used%%
 ;bar-used-foreground-3 = ${colors.red}
 ;bar-used-fill = |
 ;bar-used-empty = |
-;bar-used-empty-foreground = ${colors.gray}
+;bar-used-empty-foreground = ${colors.foreground}
 
 ;[module/wlan]
 ;type = internal/network
@@ -439,11 +426,11 @@ label = %date% %time%
 
 [module/temperature]
 type = internal/temperature
-interval = 10
-thermal-zone = 0
+interval = 60
+thermal-zone = 2
 
-format = <label>
-format-prefix = temp:
+format = [<label>]
+;format-prefix = temp:
 label = %temperature%
 
 [module/powermenu]
@@ -476,3 +463,4 @@ menu-2-1-exec = menu-open-0
 [global/wm]
 margin-top = 0
 margin-bottom = 0
+argin-bottom = 0
