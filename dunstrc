@@ -1,0 +1,40 @@
+[global]
+geometry = "300x0-10+0"
+
+font = Terminus (TTF) 12
+
+sort = false
+shrink = true
+word_wrap = true
+
+padding = 10
+horizontal_padding = 0
+
+frame_width = 0
+frame_color = "#ED80A5"
+
+separator_height = 1
+separator_color = frame
+
+stack_duplicates = false
+hide_duplicate_count = false
+show_indicators = false
+
+mouse_left_click = close_current
+mouse_middle_click = none
+mouse_right_click = none
+
+[urgency_low]
+background = "#2E3440"
+foreground = "#ED80A5"
+timeout = 60
+
+[urgency_normal]
+background = "#2E3440"
+foreground = "#ED80A5"
+timeout = 60
+
+[urgency_critical]
+background = "#2E3440"
+foreground = "#ED80A5"
+timeout = 0

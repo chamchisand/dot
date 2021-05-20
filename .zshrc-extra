@@ -7,4 +7,11 @@ ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%}*%{$fg[blue]%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%}"
 
 VISUAL=nvim; export VISUAL EDITOR=nvim; export EDITOR
+alias vi=nvim
 alias vim=nvim
+
+export AWS_PROFILE=default
+
+export XCURSOR_PATH=${XCURSOR_PATH}:/usr/share/icons
+
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
