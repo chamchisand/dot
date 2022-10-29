@@ -16,7 +16,6 @@ Plugin 'scrooloose/syntastic'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'itchyny/lightline.vim'
-Plugin 'w0rp/ale'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'junegunn/fzf'
 Plugin 'luochen1990/rainbow'
@@ -27,6 +26,7 @@ Plugin 'digitaltoad/vim-pug'
 Plugin 'yuezk/vim-js'
 Plugin 'maxmellon/vim-jsx-pretty'
 Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'dense-analysis/ale'
 
 " Plugin 'maksimr/vim-jsbeautify'
 " Plugin 'pangloss/vim-javascript'
@@ -95,6 +95,10 @@ hi Folded ctermbg=black ctermfg=green
 "let &colorcolumn=join(range(81,999),",")
 "hi ColorColumn ctermbg=darkgray
 
+" set clipboard=unnamed
+" set clipboard=unnamedplus
+set mouse=r
+
 " BLACKHOLE REGISTER "
 vnoremap p "_dP
 vnoremap P "_dP
@@ -128,7 +132,7 @@ nmap <Leader>w <C-w>w
 
 " ALE "
 let g:ale_enabled = 1
-let g:ale_linters = {'javascript': ['eslint'], 'python': ['flake8']}
+let g:ale_linters = {'javascript': ['eslint'], 'json': ['jq'], 'python': ['flake8']}
 let g:ale_fixers = {'javascript': ['eslint']}
 let g:ale_fix_on_save = 0
 let g:ale_lint_on_text_changed = 'never'
@@ -176,6 +180,11 @@ inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
 " FZF "
 let g:fzf_layout = { 'down': '~30%' }
+
+" vnoremap <leader>y "+y
+" nnoremap <leader>y "+y
+" nnoremap <leader>p "+p
+" vnoremap <leader>p "+p
 
 augroup go
   autocmd!

@@ -14,10 +14,10 @@ criticalColor()
 
 warnColor()
 {
-  echo "<span background='$yellow' color='$black'> $1 </span>"
+  echo "<span background='$red' color='$black'> $1 </span>"
 }
 
 okColor()
 {
-  echo "<span background='$green' color='$black'> $1 </span>"
+  echo "<span background='$yellow' color='$black'> $1 </span>"
 }
