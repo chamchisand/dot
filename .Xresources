@@ -10,41 +10,51 @@ Xft.rgba: rgb
 
 ! #include "/home/andrew/github/nord-xresources/src/nord"
 
-*.foreground: #CFD8DC
+*.foreground: #CEDBDA
 *.background: #2E3440
 ! black
 *.color0:     #3a404f
 *.color8:     #568E81
 ! red
 *.color1:     #ed80a5
-*.color9:     #ed80a5
+*.color9:     #f8bbd0
 ! green
-*.color2:     #85c7c7
-*.color10:    #6BBCB3
+*.color2:     #a5d6a7
+*.color10:    #69f0ae
 ! yellow
-*.color3:     #FFB6C1
-*.color11:    #FFB6C1
+*.color3:     #ffee58
+*.color11:    #fff59d
 ! blue
-*.color4:     #96d4f4
-*.color12:    #6BBCB3
+*.color4:     #64b5f6
+*.color12:    #90caf9
 ! magenta
-*.color5:     #b39ddb
+*.color5:     #9575cd
 *.color13:    #b39ddb
 ! cyan
-*.color6:     #85c7c7
-*.color14:    #96c4c4
+*.color6:     #4dd0e1
+*.color14:    #00e5ff
 ! white
-*.color7:     #80cbc4
-*.color15:    #b2dfdb
+*.color7:     #bbdefb
+*.color15:    #ffcdd2
 
 ! U R X V T
 
 URxvt*scrollBar: false
 
-URxvt*font: xft:xos4 Terminus:pixelsize=12,xft:NanumSquare
-URxvt*boldFont: xft:xos4 Terminus:pixelsize=12,xft:NanumSquare
-URxvt*italicFont: xft:xos4 Terminus:pixelsize=12,xft:NanumSquare
-URxvt*boldItalicFont: xft:xos4 Terminus:pixelsize=12,xft:NanumSquare
+! URxvt*font: xft:Terminus (TTF):antialias=false:hinting=false:autohint=false:pixelsize=14,xft:NanumSquare
+! URxvt*boldFont: xft:Terminus (TTF):antialias=false:hinting=false:autohint=false:pixelsize=14,xft:NanumSquare
+! URxvt*italicFont: xft:Terminus (TTF):antialias=false:hinting=false:autohint=false:pixelsize=14,xft:NanumSquare
+! URxvt*boldItalicFont: xft:Terminus (TTF):antialias=false:hinting=false:autohint=false:pixelsize=14,xft:NanumSquare
+
+URxvt*font: xft:Terminus (TTF):size=12,xft:NanumSquare
+URxvt*boldFont: xft:Terminus (TTF):size=12,xft:NanumSquare
+URxvt*italicFont: xft:Terminus (TTF):size=12,xft:NanumSquare
+URxvt*boldItalicFont: xft:Terminus (TTF):size=12,xft:NanumSquare
+
+!URxvt*font: xft:xos4 Terminus:size=10,xft:NanumSquare
+!URxvt*boldFont: xft:xos4 Terminus:size=10,xft:NanumSquare
+!URxvt*italicFont: xft:xos4 Terminus:size=10,xft:NanumSquare
+!URxvt*boldItalicFont: xft:xos4 Terminus:size=10,xft:NanumSquare
 
 !URxvt*letterSpace: 1
 URxvt*underlineColor: #f8bbd0
@@ -61,10 +71,10 @@ URxvt*underlineColor: #f8bbd0
 !URxvt*scrollColor:     #000000
 !URxvt*geometry:        112x22
 
-! URxvt.cursorBlink: 1
-! URxvt.cursorUnderline: 1
-! URxvt*cursorColor: #D08770
-! URxvt*cursorColor2: #99aaaa
+!URxvt.cursorBlink: 1
+!URxvt.cursorUnderline: 1
+!URxvt*cursorColor: #6e9db5
+!URxvt*cursorColor2: #ed80a5
 
 URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,resize-font
 URxvt.url-select.launcher: chromium
@@ -75,24 +85,22 @@ URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-s: perl:keyboard-select:search
 URxvt.keyboard-select.clipboard: true
 
-rofi.font: Terminus (TTF) 9
-rofi.fullscreen: true
-rofi.padding: 0
-rofi.width: 300
-rofi.lines: 5
-rofi.bw: 0
-rofi.columns: 1
-rofi.line-padding: 10
-rofi.line-margin: 0
-rofi.color-enabled: true
-
-rofi.color-window: #3B4252, #3B4252, #3B4252
-rofi.color-normal: #3B4252, #96d4f4, #3B4252, #96d4f4, #3B4252
-
-!rofi.color-window: #2E3440, #2E3440, #81A1C1
-!rofi.color-normal: #2E3440, #81A1C1, #2E3440, #81A1C1, #2E3440
-
-!rofi.color-active: base00, #268bd2, base00, #268bd2, #205171
-!rofi.color-urgent: base00, #f3843d, base00, #268bd2, #ffc39c
-rofi.separator-style: none
-rofi.hide-scrollbar: true
+! rofi.font: Terminus (TTF) 12
+! rofi.fullscreen: true
+! rofi.padding: 0
+! rofi.width: 400
+! rofi.lines: 5
+! rofi.bw: 0
+! rofi.columns: 1
+! rofi.line-padding: 10
+! rofi.line-margin: 0
+! rofi.color-enabled: true
+! rofi.separator-style: none
+! rofi.hide-scrollbar: true
+!
+! rofi.color-window: #2E3440, #2E3440, #2E3440
+! rofi.color-normal: #2E3440, #6e9db5, #2E3440, #6e9db5, #2E3440
+! rofi.color-window: #2E3440, #2E3440, #81A1C1
+! rofi.color-normal: #2E3440, #81A1C1, #2E3440, #81A1C1, #2E3440
+! rofi.color-active: base00, #268bd2, base00, #268bd2, #205171
+! rofi.color-urgent: base00, #f3843d, base00, #268bd2, #ffc39c
