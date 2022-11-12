@@ -1,8 +1,8 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin('~/.config/nvim/bundle')
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'mileszs/ack.vim'
@@ -55,6 +55,7 @@ syntax on
 set t_Co=256
 set background=dark
 colorscheme nord
+
 let mapleader=','
 set encoding=utf-8
 set pastetoggle=<Leader>p
@@ -80,20 +81,20 @@ set noshowmode
 "set colorcolumn=80
 
 hi Cursor ctermbg=red ctermfg=black
-"hi CursorColumn ctermbg=magenta ctermfg=black
+" hi CursorColumn ctermbg=magenta ctermfg=black
 " hi QuickFixLine ctermbg=green ctermfg=black
 " hi Search ctermbg=red ctermfg=black
 hi Search ctermbg=yellow
 hi IncSearch ctermbg=red ctermfg=black
 " hi Visual ctermbg=green ctermfg=black
-"hi ExtraWhitespace ctermbg=red
+" hi ExtraWhitespace ctermbg=red
 hi Folded ctermbg=black ctermfg=green
-"hi CursorLine ctermbg=235
+" hi CursorLine ctermbg=235
 " hi MatchParen ctermfg=black ctermbg=red
-"hi SpecialKey ctermfg=240
-"hi Directory guifg=none ctermfg=red
-"let &colorcolumn=join(range(81,999),",")
-"hi ColorColumn ctermbg=darkgray
+" hi SpecialKey ctermfg=240
+" hi Directory guifg=none ctermfg=red
+" let &colorcolumn=join(range(81,999),",")
+" hi ColorColumn ctermbg=darkgray
 
 " set clipboard=unnamed
 " set clipboard=unnamedplus
@@ -159,11 +160,11 @@ let g:strip_whitespace_confirm=0
 
 " INDENT "
 " set list
-" let &lcs = 'tab:¦ '
+" let &lcs = 'tab:? '
 let g:indentLine_color_term = 239
 let g:indentLine_enabled = 1
 " let g:indentLine_setConceal = 0
-" let g:indentLine_char = '¦'
+" let g:indentLine_char = '?'
 " let g:indentLine_leadingSpaceEnabled = 0
 " let g:indentLine_leadingSpaceChar = ''
 
