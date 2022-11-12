@@ -1,60 +1,47 @@
 {
   "layer": "bottom",
   "position": "bottom",
-  "margin": "0",
+  "margin": "1 0 0 0",
   "modules-left": [],
-  "modules-center": ["sway/workspaces", "sway/mode", "custom/tr", "custom/volume", "temperature", "clock"],
+  "modules-center": ["sway/workspaces", "sway/mode", "custom/volume", "temperature", "custom/tr", "clock"],
   "modules-right": [],
   "sway/workspaces": {
-    "format": "[{value}]",
-    "disable-scroll": true
+    "format": "{value}",
+    "disable-scroll": true,
+    "disable-click": false
   },
   "sway/window": {
     "tooltip": false
   },
   "sway/mode": {
-    "format": "[{}]",
+    "format": "{}",
   },
-  "clock": {
-    "format": "[{:%a %d %b %Y %H:%M}]",
-    "tooltip": false
+  "sway/language": {
+    "format": "{}",
   },
-  "mpd": {
-    "format": "{artist} {title}",
-    "format-disconnected": "disconnected",
-    "format-stopped": "mpd",
-    "interval": 5,
-    "tooltip": false
-  },
-  "cpu": {
-    "format": "CPU:{usage}%",
-    "tooltip": false,
-    "interval": 30
-  },
-  "memory": {
-    "format": "Mem:{used:0.1f}G",
-    "tooltip": false,
-    "interval": 30
+  "sway/keyboard-state": {
+    "numlock": true,
+    "capslock": true,
+    "format": "{name} {icon}",
+    "format-icons": {
+      "locked": "L",
+      "unlocked": "U"
+    }
   },
   "temperature": {
-    "format": "[{temperatureC}°C]",
-    "thermal-zone": 3,
-    "interval": 30,
+    "format": "{temperatureC}°C",
+    "interval": 60,
     "tooltip": false,
     "critical-threshold": 64
   },
-  "tray": {
-    "icon-size": 21,
-    "spacing": 10
-  },
   "custom/volume": {
     "interval": "once",
-    "format": "[{}]",
+    "format": "{}",
     "tooltip": false,
     "exec": "~/bin/volume",
-    "on-click": "~/bin/volume -m 1",
-    "on-scroll-up": "~/bin/volume -m 4",
-    "on-scroll-down": "~/bin/volume -m 5"
+    "on-click": "~/bin/volume 1",
+    "on-scroll-up": "~/bin/volume 4",
+    "on-scroll-down": "~/bin/volume 5"
   },
   "custom/tr": {
     "format": "{}",
@@ -63,10 +50,36 @@
     "escape": true,
     "exec": "~/bin/tr-bar"
   },
-  "custom/ibus": {
-    "format": "{}",
-    "interval": 1,
-    "tooltip": false,
-    "exec": "~/bin/ibus.sh"
-  }
+  "clock": {
+    "interval": 60,
+    "format": "{:%Y-%m-%d %H:%M}",
+    "tooltip": false
+  },
+  // "mpd": {
+  //   "format": "{artist} {title}",
+  //   "format-disconnected": "disconnected",
+  //   "format-stopped": "mpd",
+  //   "interval": 5,
+  //   "tooltip": false
+  // },
+  // "cpu": {
+  //   "format": "CPU:{usage}%",
+  //   "tooltip": false,
+  //   "interval": 30
+  // },
+  // "memory": {
+  //   "format": "Mem:{used:0.1f}G",
+  //   "tooltip": false,
+  //   "interval": 30
+  // },
+  // "tray": {
+  //   "icon-size": 21,
+  //   "spacing": 10
+  // },
+  // "custom/ibus": {
+  //   "format": "{}",
+  //   "interval": 1,
+  //   "tooltip": false,
+  //   "exec": "~/bin/ibus.sh"
+  // }
 }

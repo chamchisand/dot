@@ -1,59 +1,93 @@
 * {
+  all: unset;
   border: none;
   border-radius: 0;
-  /* font-family: "Noto Sans"; */
-  font-family: "Terminus (TTF)";
-  font-size: 12px;
+  font-family: "Terminus";
+  font-size: 14px;
   font-weight: normal;
-  min-height: 0;
 }
 
 window#waybar {
-  background: #2E3440;
-  min-width: 0;
 }
 
 window#waybar.hidden {
   /* opacity: 0.2; */
 }
 
-#workspaces, #window, #mpd, #clock, #battery, #cpu, #memory, #temperature, #backlight, #network, #pulseaudio, #custom-media, #tray, #mode, #idle_inhibitor, #custom-keyboard, #custom-volume, #custom-tr {
-  color: #b39ddb;
-  padding: 5px;
-}
-
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-#workspaces  {
-  background: transparent;
-  padding: 0;
+#workspaces {
 }
 
 #workspaces button {
   transition: none;
-  color: #b39ddb;
-  padding: 0 5px;
+  background-color: #FB9FB1;
+  color: #2E3440;
+  padding: 6px 12px;
 }
 
 #workspaces button + button {
-  /* margin-left: 1px; */
+  margin-left: 1px;
 }
 
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
-  background: transparent;
+  box-shadow: inherit;
+  text-shadow: inherit;
 }
 
 #workspaces button.focused {
-  color: #b2dfdb;
+  background-color: #F0719B;
+  color: #2E3440;
 }
 
 #workspaces button.urgent {
-  color: #FB9FB1;
+  background-color: #F0719B;
+  color: #2E3440;
+}
+
+#clock {
+  background-color: #FB9FB1;
+  color: #2E3440;
+  margin-left: 1px;
+  padding: 6px 12px;
 }
 
 #mode {
-  color: #FB9FB1;
+  background-color: #F0719B;
+  color: #2E3440;
+  margin-left: 1px;
+  padding: 6px 12px;
 }
 
+#custom-volume {
+  background-color: #FB9FB1;
+  color: #2E3440;
+  margin-left: 1px;
+  padding: 6px 12px;
+}
+
+#custom-tr {
+  background-color: #FB9FB1;
+  color: #2E3440;
+  margin-left: 1px;
+  padding: 6px 12px;
+}
+
+#custom-tr.done {
+  background-color: #ed80a5;
+}
+
+#temperature {
+  background-color: #FB9FB1;
+  color: #2E3440;
+  margin-left: 1px;
+  padding: 6px 12px;
+}
+
+#temperature.critical {
+  background-color: #F0719B;
+}
+
+/*
 #mpd {
   color: #b2dfdb;
 }
@@ -69,21 +103,4 @@ window#waybar.hidden {
 #mpd.paused {
   color: #FB9FB1;
 }
-
-#custom-volume {
-  color: #b2dfdb;
-}
-
-#custom-tr {
-  color: #b2dfdb;
-}
-
-#custom-tr.done {
-  color: #ed80a5;
-}
-
-#temperature { }
-
-#temperature.critical {
-  color: #FB9FB1;
-}
+*/
