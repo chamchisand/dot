@@ -8,10 +8,9 @@ Xft.rgba: rgb
 
 ! C O L O R -  S E T T I N G S
 
-! #include "/home/andrew/github/nord-xresources/src/nord"
-
 *.foreground: #CEDBDA
-*.background: #2E3440
+! *.background: #2E3440
+*.background: #282A36
 ! black
 *.color0:     #3a404f
 *.color8:     #568E81
@@ -41,22 +40,12 @@ Xft.rgba: rgb
 
 URxvt*scrollBar: false
 
-! URxvt*font: xft:Terminus (TTF):antialias=false:hinting=false:autohint=false:pixelsize=14,xft:NanumSquare
-! URxvt*boldFont: xft:Terminus (TTF):antialias=false:hinting=false:autohint=false:pixelsize=14,xft:NanumSquare
-! URxvt*italicFont: xft:Terminus (TTF):antialias=false:hinting=false:autohint=false:pixelsize=14,xft:NanumSquare
-! URxvt*boldItalicFont: xft:Terminus (TTF):antialias=false:hinting=false:autohint=false:pixelsize=14,xft:NanumSquare
+URxvt*font: xft:Terminus:size=12,xft:Noto Sans Mono
+URxvt*boldFont: xft:Terminus:size=12,xft:Noto Sans Mono
+URxvt*italicFont: xft:Terminus:size=12,xft:Noto Sans Mono
+URxvt*boldItalicFont: xft:Terminus:size=12,xft:Noto Sans Mono
 
-URxvt*font: xft:Terminus (TTF):size=12,xft:NanumSquare
-URxvt*boldFont: xft:Terminus (TTF):size=12,xft:NanumSquare
-URxvt*italicFont: xft:Terminus (TTF):size=12,xft:NanumSquare
-URxvt*boldItalicFont: xft:Terminus (TTF):size=12,xft:NanumSquare
-
-!URxvt*font: xft:xos4 Terminus:size=10,xft:NanumSquare
-!URxvt*boldFont: xft:xos4 Terminus:size=10,xft:NanumSquare
-!URxvt*italicFont: xft:xos4 Terminus:size=10,xft:NanumSquare
-!URxvt*boldItalicFont: xft:xos4 Terminus:size=10,xft:NanumSquare
-
-!URxvt*letterSpace: 1
+! URxvt*letterSpace: 0
 URxvt*underlineColor: #f8bbd0
 
 !URxvt.transparent: true
@@ -84,23 +73,3 @@ URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-s: perl:keyboard-select:search
 URxvt.keyboard-select.clipboard: true
-
-! rofi.font: Terminus (TTF) 12
-! rofi.fullscreen: true
-! rofi.padding: 0
-! rofi.width: 400
-! rofi.lines: 5
-! rofi.bw: 0
-! rofi.columns: 1
-! rofi.line-padding: 10
-! rofi.line-margin: 0
-! rofi.color-enabled: true
-! rofi.separator-style: none
-! rofi.hide-scrollbar: true
-!
-! rofi.color-window: #2E3440, #2E3440, #2E3440
-! rofi.color-normal: #2E3440, #6e9db5, #2E3440, #6e9db5, #2E3440
-! rofi.color-window: #2E3440, #2E3440, #81A1C1
-! rofi.color-normal: #2E3440, #81A1C1, #2E3440, #81A1C1, #2E3440
-! rofi.color-active: base00, #268bd2, base00, #268bd2, #205171
-! rofi.color-urgent: base00, #f3843d, base00, #268bd2, #ffc39c
