@@ -11,7 +11,6 @@ window#waybar {
 }
 
 window#waybar.hidden {
-  /* opacity: 0.2; */
 }
 
 #workspaces {
@@ -21,7 +20,7 @@ window#waybar.hidden {
   transition: none;
   background-color: #FB9FB1;
   color: #2E3440;
-  padding: 6px 12px;
+  padding: 4px 10px;
 }
 
 #workspaces button + button {
@@ -35,41 +34,25 @@ window#waybar.hidden {
 }
 
 #workspaces button.focused {
-  background-color: #F0719B;
+  background-color: #ed80a5;
   color: #2E3440;
 }
 
 #workspaces button.urgent {
-  background-color: #F0719B;
+  background-color: #ed80a5;
   color: #2E3440;
-}
-
-#clock {
-  background-color: #FB9FB1;
-  color: #2E3440;
-  margin-left: 1px;
-  padding: 6px 12px;
 }
 
 #mode {
-  background-color: #F0719B;
+  background-color: #ed80a5;
   color: #2E3440;
-  margin-left: 1px;
-  padding: 6px 12px;
-}
-
-#custom-volume {
-  background-color: #FB9FB1;
-  color: #2E3440;
-  margin-left: 1px;
-  padding: 6px 12px;
+  padding: 4px 10px;
 }
 
 #custom-tr {
   background-color: #FB9FB1;
   color: #2E3440;
-  margin-left: 1px;
-  padding: 6px 12px;
+  padding: 4px 10px;
 }
 
 #custom-tr.done {
@@ -77,14 +60,59 @@ window#waybar.hidden {
 }
 
 #temperature {
-  background-color: #FB9FB1;
-  color: #2E3440;
-  margin-left: 1px;
-  padding: 6px 12px;
+  /* background-color: skyblue; */
+  /* background-color: #FB9FB1; */
+  /* color: #2E3440; */
+  /* margin-left: 1px; */
+  /* padding: 6px 12px; */
+  color: #FB9FB1;
+  margin-left: 20;
 }
 
 #temperature.critical {
-  background-color: #F0719B;
+  color: #ed80a5;
+}
+
+#cpu {
+  /* background-color: #FB9FB1; */
+  /* padding: 6px; */
+  /* color: #2E3440; */
+  color: #FB9FB1;
+  margin-left: 20;
+}
+
+#memory {
+  /* background-color: #FB9FB1; */
+  /* padding: 6px; */
+  /* color: #2E3440; */
+  color: #FB9FB1;
+  margin-left: 20;
+}
+
+#custom-volume {
+  /* background-color: #FB9FB1; */
+  /* color: #2E3440; */
+  /* margin-left: 1px; */
+  /* padding: 6px 12px; */
+  color: #FB9FB1;
+  margin-left: 20;
+}
+
+#custom-pulseaudio {
+  /* background-color: #FB9FB1; */
+  /* color: #2E3440; */
+  /* margin-left: 1px; */
+  /* padding: 6px 12px; */
+  color: #FB9FB1;
+  margin-left: 20;
+}
+
+#clock {
+  /* background-color: #FB9FB1; */
+  /* color: #2E3440; */
+  /* padding: 6px 12px; */
+  margin-left: 20;
+  color: #FB9FB1;
 }
 
 /*
