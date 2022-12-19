@@ -1,60 +1,42 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin()
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'zchee/deoplete-jedi'
-Plugin 'carlitux/deoplete-ternjs'
-Plugin 'Yggdroot/indentLine'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'itchyny/lightline.vim'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'junegunn/fzf'
-Plugin 'luochen1990/rainbow'
-Plugin 'ap/vim-css-color'
-Plugin 'arcticicestudio/nord-vim'
-Plugin 'leshill/vim-json'
-Plugin 'digitaltoad/vim-pug'
-Plugin 'yuezk/vim-js'
-Plugin 'maxmellon/vim-jsx-pretty'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'dense-analysis/ale'
+Plug 'mileszs/ack.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'carlitux/deoplete-ternjs'
+Plug 'Yggdroot/indentLine'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'airblade/vim-gitgutter'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'itchyny/lightline.vim'
+Plug 'tomtom/tcomment_vim'
+Plug 'junegunn/fzf'
+Plug 'luochen1990/rainbow'
+Plug 'ap/vim-css-color'
+Plug 'leshill/vim-json'
+Plug 'digitaltoad/vim-pug'
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'dense-analysis/ale'
+Plug 'arcticicestudio/nord-vim'
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 
-" Plugin 'maksimr/vim-jsbeautify'
-" Plugin 'pangloss/vim-javascript'
-" Plugin 'jelera/vim-javascript-syntax'
-" Plugin 'maxmellon/vim-jsx-pretty'
-" Plugin 'chemzqm/vim-jsx-improve'
-" Plugin 'pangloss/vim-javascript'
-" Plugin 'othree/yajs.vim'
-" Plugin 'kien/rainbow_parentheses.vim'
-" Plugin 'junegunn/rainbow_parentheses.vim'
-" Plugin 'frazrepo/vim-rainbow'
-" Plugin 'francoiscabrol/ranger.vim'
-" Plugin 'rbgrouleff/bclose.vim'
-" Plugin 'dracula/vim', { 'name': 'dracula' }
-" Plugin 'nanotech/jellybeans.vim'
-" Plugin 'w0ng/vim-hybrid'
-" Plugin 'tpope/vim-fugitive'
-" Plugin 'tpope/vim-commentary'
-" Plugin 'scrooloose/nerdcommenter'
-" Plugin 'godlygeek/tabular'
+call plug#end()
 
-call vundle#end()
 filetype plugin indent on
 syntax on
 
-set t_Co=256
 set background=dark
-colorscheme nord
+set termguicolors
+colorscheme catppuccin_macchiato
+" colorscheme catppuccin_frappe
+" colorscheme catppuccin_mocha
+" colorscheme catppuccin_latte
+" colorscheme nord
 
 let mapleader=','
 set encoding=utf-8
@@ -105,10 +87,10 @@ vnoremap p "_dP
 vnoremap P "_dP
 
 " RAINBOW "
-let g:rainbow_active = 1
-let g:rainbow_conf = {
-\  'ctermfgs': ['218', 'lightyellow', 'lightcyan', 'lightmagenta'],
-\  }
+" let g:rainbow_active = 1
+" let g:rainbow_conf = {
+" \  'ctermfgs': ['218', 'lightyellow', 'lightcyan', 'lightmagenta'],
+" \  }
 
 " ACK "
 cnoreabbrev Ack Ack!
