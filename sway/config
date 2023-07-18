@@ -21,7 +21,8 @@ set $term urxvt
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu exec urxvt --class=launcher -e sway-launcher-desktop
+# set $menu exec urxvt --class=launcher -e sway-launcher-desktop
+set $menu exec urxvt --class=launcher -e bash -c 'cmd=$(compgen -c | sort -u | fzf --color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284,fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf,marker:#f2d5cf,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284); setsid -f $cmd'
 
 ### Output configuration
 
