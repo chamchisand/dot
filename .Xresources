@@ -1,6 +1,6 @@
-Xft.antialias: 1
-Xft.autohint: 1
-Xft.dpi: 96
+! Xft.antialias: 1
+! Xft.autohint: 0
+! Xft.dpi: 96
 Xft.hinting: 1
 Xft.hintstyle: hintfull
 Xft.lcdfilter: lcddefault
@@ -8,37 +8,71 @@ Xft.rgba: rgb
 
 ! C O L O R -  S E T T I N G S
 
-*.foreground: #CEDBDA
-! *.background: #2E3440
-*.background: #282A36
+! *.foreground: #CEDBDA
+! ! *.background: #2E3440
+! ! *.background: #282A36
+! *.background: #303446
+! ! black
+! *.color0:     #3a404f
+! *.color8:     #568E81
+! ! red
+! *.color1:     #ed80a5
+! *.color9:     #f8bbd0
+! ! green
+! *.color2:     #a5d6a7
+! *.color10:    #69f0ae
+! ! yellow
+! ! *.color3:     #ffee58
+! *.color3:     #fff59d
+! *.color11:    #fff59d
+! ! blue
+! *.color4:     #64b5f6
+! *.color12:    #90caf9
+! ! magenta
+! *.color5:     #9575cd
+! *.color13:    #b39ddb
+! ! cyan
+! *.color6:     #4dd0e1
+! *.color14:    #00e5ff
+! ! white
+! *.color7:     #bbdefb
+! *.color15:    #ffcdd2
+
+
+! https://github.com/catppuccin/xresources/blob/main/frappe.Xresources
+*background: #303446
+*foreground: #C6D0F5
 ! black
-*.color0:     #3a404f
-*.color8:     #568E81
+*color0: #51576D
+*color8: #626880
 ! red
-*.color1:     #ed80a5
-*.color9:     #f8bbd0
+*color1: #E78284
+*color9: #E78284
 ! green
-*.color2:     #a5d6a7
-*.color10:    #69f0ae
+*color2: #A6D189
+*color10: #A6D189
 ! yellow
-*.color3:     #ffee58
-*.color11:    #fff59d
+*color3: #E5C890
+*color11: #E5C890
 ! blue
-*.color4:     #64b5f6
-*.color12:    #90caf9
+*color4: #8CAAEE
+*color12: #8CAAEE
 ! magenta
-*.color5:     #9575cd
-*.color13:    #b39ddb
+*color5: #F4B8E4
+*color13: #F4B8E4
 ! cyan
-*.color6:     #4dd0e1
-*.color14:    #00e5ff
+*color6: #81C8BE
+*color14: #81C8BE
 ! white
-*.color7:     #bbdefb
-*.color15:    #ffcdd2
+*color7: #B5BFE2
+*color15: #A5ADCE
+
 
 ! U R X V T
 
 URxvt*scrollBar: false
+URxvt*scrollTtyOutput: false
+URxvt*scrollTtyKeypress: true
 
 URxvt*font: xft:Terminus:size=12,xft:Noto Sans Mono
 URxvt*boldFont: xft:Terminus:size=12,xft:Noto Sans Mono
