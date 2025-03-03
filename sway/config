@@ -228,6 +228,7 @@ set $schema org.gnome.desktop.interface
 exec_always {
   fcitx5 -d --replace
   xrdb ~/.Xresources
+  pkill -9 swayidle && swayidle -w timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
   gsettings set $schema gtk-theme Nordic-darker
   gsettings set $schema icon-theme Papirus-Dark
   # gsettings set $schema gtk-application-prefer-dark-theme true
