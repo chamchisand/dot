@@ -2,12 +2,11 @@
 # S W A Y #
 ###########
 
-set $bg #282A36
+set $bg #303446
 set $fg #CEDBDA
-set $border #282A36
-set $gray #222222
-set $warn #FB9FB1
-set $indi #FB9FB1
+set $border #222222
+set $warn #F5C2E7
+set $indi #F5C2E7
 
 set $mod Mod1
 
@@ -22,12 +21,15 @@ set $term urxvt
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
 # set $menu exec urxvt --class=launcher -e sway-launcher-desktop
+# set $menu exec urxvt --class=launcher -e env GLYPH_COMMAND="- " GLYPH_DESKTOP="+ " sway-launcher-desktop
 set $menu exec urxvt --class=launcher -e bash -c 'cmd=$(compgen -c | sort -u | fzf --color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284,fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf,marker:#f2d5cf,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284); setsid -f $cmd'
+# set $menu exec urxvt --class=launcher -e bash -c ~/bin/launcher.sh
 
 ### Output configuration
 
-# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg #282A36 solid_color
+# output * bg ~/Pictures/103026471_p0.png fit
+# output * bg ~/Pictures/97361500_p1.jpg center $bg
+output * bg $bg solid_color
 
 #
 # Example configuration:
@@ -212,20 +214,23 @@ include /etc/sway/config.d/*
 default_border pixel 4
 default_floating_border none
 
-# class                 border backgr text indi  child_border
-client.focused          $bg    $gray  $fg  $indi $gray
-client.focused_inactive $bg    $bg    $fg  $bg   $border
-client.unfocused        $bg    $bg    $fg  $bg   $border
-client.urgent           $bg    $warn  $fg  $warn $warn
+# hide_edge_borders both
+smart_borders on
 
-set $gnome-schema org.gnome.desktop.interface
+# class                   border backgr text indi  child_border
+client.focused          $bg $border $fg $indi
+client.focused_inactive $bg $bg     $fg
+client.unfocused        $bg $bg     $fg
+client.urgent           $bg $warn   $fg
+
+set $schema org.gnome.desktop.interface
 
 exec_always {
   fcitx5 -d --replace
   xrdb ~/.Xresources
-  ~/bin/lock
-  gsettings set $gnome-schema gtk-theme 'Arc-Dark-solid'
-  gsettings set $gnome-schema icon-theme 'Papirus-Dark'
-  # gsettings set $gnome-schema cursor-theme 'Your cursor Theme'
-  # gsettings set $gnome-schema font-name 'Your font name'
+  gsettings set $schema gtk-theme Nordic-darker
+  gsettings set $schema icon-theme Papirus-Dark
+  # gsettings set $schema gtk-application-prefer-dark-theme true
+  # gsettings set $schema cursor-theme Catppuccin-Mocha-Dark
+  # gsettings set $schema font-name 'Noto'
 }

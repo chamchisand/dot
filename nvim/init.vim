@@ -32,15 +32,15 @@ syntax on
 
 set background=dark
 set termguicolors
-colorscheme catppuccin_macchiato
-" colorscheme catppuccin_frappe
+colorscheme catppuccin_frappe
+" colorscheme catppuccin_macchiato
 " colorscheme catppuccin_mocha
 " colorscheme catppuccin_latte
 " colorscheme nord
 
 let mapleader=','
 set encoding=utf-8
-set pastetoggle=<Leader>p
+" set pastetoggle=<Leader>p
 set softtabstop=2
 set tabstop=2
 set shiftwidth=2
@@ -97,7 +97,7 @@ cnoreabbrev Ack Ack!
 " nnoremap <Leader>a :Ack!<Space>
 
 " LIGHTLINE "
-let g:lightline = {'colorscheme': 'jellybeans'}
+let g:lightline = {'colorscheme': 'catppuccin_frappe'}
 
 " NERDTREE "
 let NERDTreeShowLineNumbers = 0
@@ -129,10 +129,10 @@ let g:ale_warn_about_trailing_blank_lines = 0
 
 " TABULAR "
 "if exists(":Tabularize")
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:/l0r1<CR>
-vmap <Leader>a: :Tabularize /:/l0r1<CR>
+" nmap <Leader>a= :Tabularize /=<CR>
+" vmap <Leader>a= :Tabularize /=<CR>
+" nmap <Leader>a: :Tabularize /:/l0r1<CR>
+" vmap <Leader>a: :Tabularize /:/l0r1<CR>
 "endif
 
 " BETTER WHITESPACE "

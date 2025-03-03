@@ -1,16 +1,38 @@
 {
-  "id": "bottom",
-  "layer": "bottom",
+  "id": "waybar",
   "position": "bottom",
-  "margin": "5 10",
+  "margin": "5 10 0",
   "spacing": 1,
   "modules-left": [],
   "modules-center": ["sway/workspaces", "sway/mode", "custom/tr"],
-  "modules-right": ["custom/pulseaudio", "cpu", "memory", "temperature", "clock"],
+  "modules-right": ["custom/pulseaudio", "cpu", "temperature", "disk", "memory", "clock"],
+  "tray": {
+    "icon-size": 21,
+    "spacing": 10
+  },
+  "disk": {
+    "format": "disk[{used}/{total} {percentage_used}%]",
+    "interval": 60,
+    "tooltip": false,
+    "path": "/"
+  },
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 20,
+    "icon-theme": "Papirus-Dark",
+    "tooltip": false,
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "ignore-list": [
+      "URxvt"
+    ],
+    "app_ids-mapping": {
+      "firefoxdeveloperedition": "firefox-developer-edition"
+    }
+  },
   "sway/workspaces": {
     "format": "{value}",
-    "disable-scroll": true,
-    "disable-click": false
+    "disable-scroll": true
   },
   "sway/window": {
     "tooltip": false
@@ -40,17 +62,25 @@
     "format": "temp[{temperatureC}°C]",
     "interval": 60,
     "tooltip": false,
-    "critical-threshold": 30
+    "critical-threshold": 29
   },
   "cpu": {
-    "format": "cpu[{icon} {load}%]",
+    "format": "cpu[{icon} {usage}%]",
     "format-icons": ["|_______", "||______", "|||_____", "||||____", "|||||___", "||||||__", "|||||||_", "||||||||"],
     "tooltip": false,
+    "states": {
+      "warning": 5,
+      "critical": 10
+    },
     "interval": 10
   },
   "memory": {
-    "format": "mem[{used:0.1f}G/{total:0.1f}G]",
+    "format": "mem[{used:0.1f}G/{total:0.1f}G {percentage}%]",
     "tooltip": false,
+    "states": {
+      "warning": 10,
+      "critical": 20
+    },
     "interval": 60
   },
   "custom/volume": {
@@ -68,6 +98,7 @@
     "format": "{}",
     "exec": "~/bin/pulseaudio",
     "on-click": "~/bin/pulseaudio mute",
+    "on-click-right": "urxvt -e pulsemixer",
     "on-scroll-up": "~/bin/pulseaudio up",
     "on-scroll-down": "~/bin/pulseaudio down"
   }

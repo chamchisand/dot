@@ -2,15 +2,14 @@
   all: unset;
   border: none;
   border-radius: 0;
-  font-family: "Terminus";
+  font-family: Terminus;
   font-size: 14px;
   font-weight: normal;
+  min-height: 0;
 }
 
 window#waybar {
-}
-
-window#waybar.hidden {
+  color: #B8C0E0;
 }
 
 #workspaces {
@@ -18,9 +17,9 @@ window#waybar.hidden {
 
 #workspaces button {
   transition: none;
-  background-color: #FB9FB1;
-  color: #2E3440;
-  padding: 4px 10px;
+  border-bottom: solid 2px #303446;
+  color: #B8C0E0;
+  padding: 5px 10px;
 }
 
 #workspaces button + button {
@@ -34,86 +33,91 @@ window#waybar.hidden {
 }
 
 #workspaces button.focused {
-  background-color: #ed80a5;
-  color: #2E3440;
+  border-bottom: solid 2px #F5C2E7;
+  color: #F5C2E7;
 }
 
 #workspaces button.urgent {
-  background-color: #ed80a5;
-  color: #2E3440;
-}
-
-#mode {
-  background-color: #ed80a5;
-  color: #2E3440;
-  padding: 4px 10px;
-}
-
-#custom-tr {
   background-color: #FB9FB1;
   color: #2E3440;
-  padding: 4px 10px;
 }
 
-#custom-tr.done {
-  background-color: #ed80a5;
+#window {
+}
+
+/* ------------------------------ */
+
+#mode,
+#temperature,
+#disk,
+#cpu,
+#memory,
+#clock,
+#custom-tr,
+#custom-pulseaudio {
+  padding: 5px 0;
+  margin: 0 10px;
+  border-bottom: solid 2px #303446;
+}
+
+/* ------------------------------ */
+
+#mode {
+  background-color: #303446;
+  border-bottom: solid 2px #F5C2E7;
+  color: #F5C2E7;
 }
 
 #temperature {
-  /* background-color: skyblue; */
-  /* background-color: #FB9FB1; */
-  /* color: #2E3440; */
-  /* margin-left: 1px; */
-  /* padding: 6px 12px; */
-  color: #FB9FB1;
-  margin-left: 20;
 }
 
 #temperature.critical {
-  color: #ed80a5;
+  border-bottom: solid 2px #F5C2E7;
+}
+
+#disk {
 }
 
 #cpu {
-  /* background-color: #FB9FB1; */
-  /* padding: 6px; */
-  /* color: #2E3440; */
-  color: #FB9FB1;
-  margin-left: 20;
+}
+
+#cpu.warning {
+  border-bottom: solid 2px #F5C2E7;
+}
+
+#cpu.critical {
+  border-bottom: solid 2px #E78284;
 }
 
 #memory {
-  /* background-color: #FB9FB1; */
-  /* padding: 6px; */
-  /* color: #2E3440; */
-  color: #FB9FB1;
-  margin-left: 20;
 }
 
-#custom-volume {
-  /* background-color: #FB9FB1; */
-  /* color: #2E3440; */
-  /* margin-left: 1px; */
-  /* padding: 6px 12px; */
-  color: #FB9FB1;
-  margin-left: 20;
+#memory.warning {
+  border-bottom: solid 2px #F5C2E7;
 }
 
-#custom-pulseaudio {
-  /* background-color: #FB9FB1; */
-  /* color: #2E3440; */
-  /* margin-left: 1px; */
-  /* padding: 6px 12px; */
-  color: #FB9FB1;
-  margin-left: 20;
+#memory.critical {
+  border-bottom: solid 2px #E78284;
 }
 
 #clock {
-  /* background-color: #FB9FB1; */
-  /* color: #2E3440; */
-  /* padding: 6px 12px; */
-  margin-left: 20;
-  color: #FB9FB1;
 }
+
+#custom-tr {
+}
+
+#custom-tr.done {
+  border-bottom: solid 2px #F5C2E7;
+}
+
+#custom-pulseaudio {
+}
+
+#custom-pulseaudio.mute {
+  border-bottom: solid 2px #F4B8E4;
+}
+
+/* ------------------------------ */
 
 /*
 #mpd {
