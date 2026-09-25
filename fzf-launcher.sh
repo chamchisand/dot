@@ -12,4 +12,5 @@ cmd=$(
 
 [[ -z "$cmd" ]] && exit 0
 
-exec "$cmd"
+setsid -f "$cmd"
+exit 0
